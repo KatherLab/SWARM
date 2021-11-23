@@ -1,26 +1,17 @@
 {
-    "projectDetails": "deploy_TCGA",
-    "dataDir_train": ["/media/oliver/EMMA-D/QUASAR-CRC-DX"],
-    "dataDir_test": ["/media/oliver/EMMA-D/YORKSHIRE-CRCFULL-DX"],
-"projectFolder": ["/media/oliver/EMMA-D/Results_deploy"],
+    "projectDetails": "name-of-the-project",
+    "dataDir_test": ["path-to-testing-data"],
+    "projectFolder": ["path-to-save-results"],
 	
     "targetLabels": ["isMSIH"],
     "trainFull": "False",
-
     "maxNumBlocks": 100,
     "epochs": 1,
     "batchSize": 124,
-     
-    "seed": 1,
-    "k": 2,
-
     "modelName": "resnet",
     "opt": "adam",
     "lr": 0.0001,
     "reg": 0.00001,
-    "gpuNo": 0,
-    "freezeRatio": 0.5,
-    "numHighScorePatients": 10,
-    "numHighScoreBlocks": 20
+    "gpuNo": 0
 }
 

@@ -1,50 +1,30 @@
 ##!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Mon Sep 27 13:13:41 2021
 
 @author: oliver
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Mar 11 13:45:05 2021
-
-@author: Narmin Ghaffari Laleh
-"""
-
-
 import utils.utils as utils
-from utils.core_utils import Train_model_Classic, Validate_model_Classic
-from utils.data_utils import ConcatCohorts_Classic, DatasetLoader_Classic, LoadTrainTestFromFolders, GetTiles
-from eval.eval_Classic import PlotTrainingLossAcc, CalculatePatientWiseAUC, PlotBoxPlot,PlotROCCurve
-
-from sklearn.model_selection import StratifiedKFold
 import torch.nn as nn
-from tqdm import tqdm
-import torchvision
 import numpy as np
 import pandas as pd
 import argparse
+from utils.data_utils import ConcatCohorts_Classic, GetTiles
+from utils.core_utils import Validate_model_Classic
+from eval.eval_Classic import CalculatePatientWiseAUC
 import torch
 import os
 import random
 from sklearn import preprocessing
-from sklearn import metrics
-from scipy.stats import ttest_ind
 import torch.nn.functional as F
-from sklearn.model_selection import train_test_split
-import torch
 import torchvision.models as models
 import torchvision.transforms as transforms
 from torch.autograd import Variable
-from fastai.vision.all import *
 from PIL import Image
 import numpy
 from dataclasses import dataclass
-from scipy import stats
 from  ROC import ROC_custom
-##############################################################################
 
 parser = argparse.ArgumentParser(description = 'Main Script to Run Training')
 parser.add_argument('--adressExp', type = str, default = r"path-to-deploy-expirement_file/deploy.txt", help = 'Adress to the experiment File')
@@ -77,7 +57,6 @@ class mnistNet(nn.Module):
         #x = self.dropout(x)
         x = self.dense4(x)
         output = x
-       
         return output
 ##############################################################################
 
@@ -116,7 +95,7 @@ if __name__ == '__main__':
         os.makedirs(args.result, exist_ok = True)
         features_file_name = os.path.join(projectFolder, 'feature_lables/test_features.npy')
 	
-	# Check if the file  having featurs and lables already exists if not extract the features
+	     # Check if the file  having featurs and lables already exists if not extract the features
         if os.path.isfile(features_file_name):
             feature_lable_path = os.path.join(projectFolder, 'feature_lables')
             csv_path = os.path.join(projectFolder, 'SPLITS/FULL_TEST.csv')
@@ -170,12 +149,7 @@ if __name__ == '__main__':
             	    h = self.layer.register_forward_hook(copy_data)
             	    self.model(t_img)
             	    h.remove()
-            	   
             	    return embedding
-               
-            	def extract_and_save_feature_vectors(self):
-            	    if self.deep_med_model != None:
-            	        self.model = load_learner(deep_med_model).model.to(device)
             	   
             	    def get_label(x):
             	        i_image = df[df["X"] == x].index.values[0]
@@ -186,12 +160,10 @@ if __name__ == '__main__':
             	            unique_labels = sorted(df["y"].unique())
             	            label_dict = dict()
             	            for i in range(len(unique_labels)):
-            	                label_dict[unique_labels[i]] = i
-            	               
+            	                label_dict[unique_labels[i]] = i 
             	            return float(label_dict[label])
             	   
             	    df = pd.read_csv(self.spreadsheet_path, dtype=str)
-            	   
             	    all_features = []
             	    labels = []
             	    image_names = []
@@ -199,9 +171,7 @@ if __name__ == '__main__':
             	    for im_name in df["X"]:
             	        image_path = im_name
             	        image_vector = self.get_feature_vectors(image_path)
-                   
             	        label = get_label(im_name)
-                   
             	        all_features.append(image_vector)
             	        labels.append(label)
             	        image_names.append(image_path)
@@ -212,14 +182,12 @@ if __name__ == '__main__':
             	    np_all_features = all_features.numpy()
             	    labels = torch_labels.reshape(-1).t()
             	    np_labels = labels.numpy()
-            	   
             	    return np_all_features, np_labels
                
             
             
             fc_train = FeatureExtraction(path_train)
             np_train_feature_vectors, np_tarin_labels = fc_train.extract_and_save_feature_vectors()
-            #print(np_train_feature_vectors, np_tarin_labels)
             path_train_feature_save = os.path.join(args.feature_label_dir, 'test_features.npy')
             path_train_lable_save = os.path.join(args.feature_label_dir, 'test_lable.npy')
             numpy.save(path_train_feature_save, np_train_feature_vectors)
@@ -228,25 +196,22 @@ if __name__ == '__main__':
 
         def loadData(feature_label_path):
             # load data from npz format to numpy
-            #xTrain, yTrain =np.load(os.path.join(feature_label_path, 'train_features.npy')), np.load(os.path.join(feature_label_path, 'train_lable.npy'))
             xTest, yTest = np.load(os.path.join(feature_label_path, 'test_features.npy')), np.load(os.path.join(feature_label_path, 'test_lable.npy'))      
             # transform numpy to torch.Tensor
             xTest, yTest = map(torch.tensor, (xTest.astype(np.float32), yTest.astype(np.int_)))    
             # convert torch.Tensor to a dataset
-            #yTrain = yTrain.type(torch.LongTensor)
             yTest = yTest.type(torch.LongTensor)
-            #trainDs = torch.utils.data.TensorDataset(xTrain,yTrain)
             testDs = torch.utils.data.TensorDataset(xTest,yTest)
             return  testDs
 
         resultlists=[]       
         batchSz = args.batch_size
-        testDs = loadData(feature_lable_path)
-               
+        testDs = loadData(feature_lable_path)    
         model_ft = mnistNet().to(device)
         print(model_ft)
         main_folder_path = r"path-to-save-roc"
         main_model_path = os.listdir(main_folder_path)
+        
         for mainpath in main_model_path:
             model_folder_path = os.path.join(main_folder_path,str(mainpath))
             model_path = os.listdir(model_folder_path)
@@ -257,8 +222,6 @@ if __name__ == '__main__':
             	model_ft.load_state_dict(torch.load(full_path))
             	print(model_ft)
             	testLoader = torch.utils.data.DataLoader(testDs, batch_size=batchSz, shuffle =False)
-            # model.load_state_dict(torch.load(args.modelAdr))      
-            	    # model = model.to(devic
             	criterion = nn.CrossEntropyLoss()
             	print('START DEPLOYING...')
             	print('')
@@ -281,16 +244,12 @@ if __name__ == '__main__':
             	df.to_csv(os.path.join(save_path,path+'TEST_RESULT_FULL.csv'), index = False)   #savepath 
             	CalculatePatientWiseAUC(os.path.join(save_path,path+'TEST_RESULT_FULL.csv'),
             	                            list(set(test_pid)), args.target_labelDict, save_path ,  counter = 'FULL')
-            	
-            	
             	path2 = os.path.join(save_path,path+'TEST_RESULT_FULL.csvTEST_RESULT_PATIENT_SCORES_FULL.csv')
             	print(path2)
             	patient_count = path.split('saved_model')
             	patient_count= patient_count[1].split('.p')
-            	
-            	#/media/oliver/EMMA-D/deploy/results/Belfast_models/belfast_saved_model0.99.pklTEST_RESULT_FULL.csvTEST_RESULT_PATIENT_SCORES_FULL.csv
             	if patient_count[0] == '0.99':
-            	    title= "ROC of "+str(mainpath) + " with all patients tested on " +deploy_name[0]
+            	    title= "ROC of "+str(mainpath) + " with all patients tested on "+ deploy_name[0]
             	else:
             	    title= "ROC of "+str(mainpath) + " with "+patient_count[0]+" patients tested on "+deploy_name[0]
             	print(title)
