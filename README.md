@@ -13,8 +13,11 @@ We assume that there are three physically separate systems (System A, System B, 
  System A is used to initialize the licence server by starting the licence container and installing the swarm licence downloaded from the HPE login website. System A also starts the SPIFFE SPIRE container. The first SN process (node) to go online is referred to as the “sentinel” node and will be the first to register itself with the SPIFFE SPIRE network. When the SN node of the system A is ready the, SN node of System B and System C are run. During training each system trains its data batch in the local system till the merging criterion (sync interval) is reached. The node which finishes its training batch first will be the leader and will collect the learning from other peers (depending on the minimum number of peers, in our case two), average the learning weights and send it back. Since the data samples are of different sizes the SL node stops at different instances creating different checkpoint models
 To use this workflow, you need to modfiy specific files based on your project.
 
-System A, B, C has two subfolders having *single_model_training* containing  the programs needed training the histopathology Image analysis based on [Laleh, N. G. et al., Gastroenterology 2020](https://www.biorxiv.org/content/10.1101/2021.08.09.455633v1.full.pdf) and *swarm_setup_training* containing *MODEL* folder having the code for running the swarm learning node and also 
+System A, B, C has two subfolders having *single_model_training* containing  the programs needed training the histopathology Image analysis based on [Laleh, N. G. et al., Gastroenterology 2020](https://www.biorxiv.org/content/10.1101/2021.08.09.455633v1.full.pdf) and *swarm_setup_training* containing *MODEL* folder having the code for running the swarm learning node having the swarm callback and three scripting language files for starting the swarm network (SN), swarm learning(SL) and spire-server node.
 Experiment file is a text file and an example of it can be find this repository.
-## Run training :
 
-To start training, we use the Main.py script. The full path to the experiemnt file, should be used as an input variable in this script.
+## Run training :
+To start training, we run the run-apls command in "SWARM\System A\swarm_setup_training\swarm-learning\bin" enter the license key to use the HPE swarm platform.
+Then provide the path to the data directory in the experiment file. Change the IP address in the sl-node, sn-node scripting file.
+
+
