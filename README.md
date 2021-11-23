@@ -1,5 +1,5 @@
 # SWARM
-# HIA (Histopathology Image Analysis)
+# SWARM LEARNING FOR Histopathology Image Analysis
 
 This repository contains requirements for running swarm learing on for workflow for end-to-end artificial intelligence on histopathology images. It is based on workflows which were previously described in [Warnat-Herresthal et al., Nature 2021](https://rdcu.be/cA9XP) and [Laleh, N. G. et al., Gastroenterology 2020](https://www.biorxiv.org/content/10.1101/2021.08.09.455633v1.full.pdf). The objective is to run a decentralized training on multiple cohorts in multiple centers and predict a given *label* directly from digitized histological whole slide images (WSI). The *label* is defined on the level of *patients*, not on the level of pixels in a given WSI. Thus, the problems addressed by HAI are *weakly supervised problems*.
 
