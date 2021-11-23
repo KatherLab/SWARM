@@ -1,0 +1,25 @@
+{
+    "projectDetails": "tcga",
+    
+    "dataDir_train": ["/home/oliver/Desktop/swarm-learning/examples/test-example/app-data/TCGA-CRC-DX"],
+    "dataDir_test": [""],
+
+    "targetLabels": ["BRAF"],
+    "trainFull": "False",
+
+    "maxNumBlocks": 150,
+    "epochs": 5,
+    "batchSize": 124,
+     
+    "seed": 1,
+    "k": 2,
+
+    "modelName": "resnet",
+    "opt": "adam",
+    "lr": 0.0001,
+    "reg": 0.00001,
+    "gpuNo": 0,
+    "freezeRatio": 0.5,
+    "numHighScorePatients": 10,
+    "numHighScoreBlocks": 20
+}
