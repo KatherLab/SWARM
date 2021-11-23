@@ -13,21 +13,6 @@ We assume that there are three physically separate systems (System A, System B, 
  System A is used to initialize the licence server by starting the licence container and installing the swarm licence downloaded from the HPE login website. System A also starts the SPIFFE SPIRE container. The first SN process (node) to go online is referred to as the “sentinel” node and will be the first to register itself with the SPIFFE SPIRE network. When the SN node of the system A is ready the, SN node of System B and System C are run. During training each system trains its data batch in the local system till the merging criterion (sync interval) is reached. The node which finishes its training batch first will be the leader and will collect the learning from other peers (depending on the minimum number of peers, in our case two), average the learning weights and send it back. Since the data samples are of different sizes the SL node stops at different instances creating different checkpoint models
 To use this workflow, you need to modfiy specific experiement file based on your project. Experiment file is a text file and an example of it can be find this repository. For this file you need to fill the following options:
 
-Input Variable name | Description
---- | --- 
--projectDetails | This is an optional string input. In this section you can write down some keywords about your experiment.| 
--dataDir_train | Path to the directory containing the normalized tiles. For example : ["K:\\TCGA-CRC-DX"]. <br/> This folder should contain a subfolder of tiles which can have one of the following names: <br/> {BLOCKS_NORM_MACENKO, BLOCKS_NORM_VAHADANE, BLOCKS_NORM_REINHARD or BLOCKS}. <br/>The clinical table and the slide table of this data set should be also stored in this folder. <br/>This is an example of the structure for this folder: <br/> K:\\TCGA-CRC-DX: <br/> { <br/> 1. BLOCKS_NORM_MACENKO <br/>2. TCGA-CRC-DX_CLINI.xlsx <br/>3. TCGA-CRC-DX_SLIDE.csv <br/> }
--dataDir_test | If you are planning to have external validation for your experiemnt, this varibal is the path to the directory containing the normalized tiles which will be used in external validation. This folder should have the same structure as the 'dataDir_train'.
--targetLabels | This is the list of targets which you want to analyze. The clinical data should have the values for these targets. For Example : ["isMSIH", "stage"].
--trainFull | If you are planning to do cross validation, this variable should be defined as False. If you want to use all the data to train and then use the external validation, then this variable should be defined as True.
--maxNumBlocks | This integer variable, defines the maximum number of tiles which will be used per slide. Since the number of extracted tiles per slide can vary alot, we use limited number of tiles per slide. For more detail, please ckeck the paper.
--epochs | This integer variable, defines the number of epochs for training. 
--batchSize |  This integer variable, defines the batch size for training. 
--modelName | This is a string variable which can be defined using one of the following neural network models. The script will download the pretrained weights for each of these models.<br/> {resnet, alexnet, vgg, squeezenet, densenet, inception, vit, efficient}
--opt | This is a string variable defining the name of optimizer to use for training. <br/> {"adam" or "sgd"}
--lr | This float variable defines the learning rate for the optimizer.
--gpuNo | If the computer has more than one gpu, this variable can be assigned to run the experiment on specified gpu.  
-
 ## Run training :
 
 To start training, we use the Main.py script. The full path to the experiemnt file, should be used as an input variable in this script.
