@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo docker rm sl-1
+sudo docker rm sl-2
 bash ./swarm-learning/bin/run-sl        \
     --name=sl-1                         \
     --sl-platform=pyt-cv2                   \
