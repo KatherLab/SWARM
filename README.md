@@ -24,7 +24,7 @@ To start the swarm learning the user has to clone this Github repository has to 
 All the data directory paths and hyperparametes hav to be set in the expitremt files and the main.py files.
 The first step is to create the docker image with the name ‘pyt-cv2’ using the Dockerfile in the *docker* folder in all the systems. 
 The second step is to change the IP address in all the scripting files in the respective system.
-To run the swarm learning setup in System A run the run-apls command in "SWARM\System A\swarm_setup_training\swarm-learning\bin" enter the license key to use the HPE swarm platform.
+To run the swarm learning setup in System A run the run-apls command in "SWARM\System A\swarm_setup_training\swarm-learning\bin" enter the license key downloaded from https://myenterpriselicense.hpe.com/cwp-ui/auth/login to use the HPE swarm platform.
 After the license key is activated start the spire-server.sh file in “SWARM\System A\swarm_setup_training”
 Run the sn-node-sentinal.sh file in “SWARM\System A\swarm_setup_training” wait till the port is ready.
 Run the sn-node.sh file in the other two systems and check that all the ports are ready.
