@@ -3,15 +3,15 @@ sudo docker rm sl-1
 bash ./swarm-learning/bin/run-sl        \
     --name=sl-1                         \
     --sl-platform=pyt-cv2                   \
-    --host-ip=137.226.23.146                  \
-    --sn-ip=137.226.23.146                    \
+    --host-ip=system_C_ip                 \
+    --sn-ip=system_C_ip                    \
     --sn-api-port=11000                 \
     --sl-fs-port=16000                  \
-    --data-dir=examples/test-example/app-data  \
-    --model-dir=examples/test-example/model    \
-    --model-program=TCGA.py        \
+    --data-dir=path-to-data-dir  \
+    --model-dir=path-to-model-dir-having-main-pathon-file/MODEL    \
+    --model-program=main.py        \
     --gpu=0                             \
-    --apls-ip 137.226.23.146                 \
-    -serverAddress 137.226.23.146            \
+    --apls-ip system_A_ip                 \
+    -serverAddress system_A_ip            \
     -genJoinToken
 

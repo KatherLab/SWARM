@@ -1,26 +1,24 @@
+
+"""
+Created on Thu Jul  8 16:26:43 2021
+
+@author: Oliver
+"""
+
 import warnings
 import argparse
 import torch
-from utils.data_utils import ConcatCohorts_Classic, DatasetLoader_Classic, LoadTrainTestFromFolders, GetTiles
-from utils.core_utils import Train_model_Classic, Validate_model_Classic
+from utils.data_utils import ConcatCohorts_Classic, GetTiles
 import utils.utils as utils
-
-from sklearn.model_selection import StratifiedKFold
 import torch.nn as nn
-import torchvision
 import numpy as np
 import pandas as pd
 import os
-import random
 from sklearn import preprocessing
 from train_function import doTrainBatch, test_1
 import torchvision.models as models
-from collections import namedtuple
-
 import torch.nn.functional as F
 from sklearn.model_selection import train_test_split
-import torch
-import torchvision.models as models
 import torchvision.transforms as transforms
 from torch.autograd import Variable
 from fastai.vision.all import *
@@ -31,17 +29,11 @@ from dataclasses import dataclass
 #Getting all the arguments from the experement file
 parser = argparse.ArgumentParser(description = 'Main Script to Run Training')
 
-# Patient count or size of the training dataset 
-size = 400 
 # Name of the expirement
-exp_name = 'Exp_5'
+exp_name = 'expirement_number'
 # path to the arguments file having the path to data, hyperparemeters and other information
 parser.add_argument('--adressExp', type = str, default = r"/path-to-exp-file/expirement_file.txt", help = 'Adress to the experiment File')
 args = parser.parse_args()
-
-
-#path to the features and lables
-feature_and_label_path = r"./feature_lables/"+exp_name+"/tcga_"+str(size)
 
 #Check for the CUDA and if available assign it
 torch.cuda.empty_cache()
@@ -63,23 +55,17 @@ class mnistNet(nn.Module):
         self.dense2 = nn.Linear(256, 256)
         self.dense3 = nn.Linear(256, 128)
         self.dense4 = nn.Linear(128, 2)
-    def forward(self, x):
-        #x = torch.flatten(x, 1)        
+    def forward(self, x):      
         x = self.dense(x)
         x = F.relu(x)
-        #x = self.dropout(x)
         x = self.dense1(x)
         x = F.relu(x)
-        #x = self.dropout(x)
         x = self.dense2(x)
         x = F.relu(x)
-        #x = self.dropout(x)
         x = self.dense3(x)
         x = F.relu(x)
-        #x = self.dropout(x)
         x = self.dense4(x)
         output = x
-       
         return output
 
 #Reading all the arguments in the experiment file
@@ -90,20 +76,16 @@ targetLabel=args.target_label
 args.feature_extract = False
 args.projectFolder = utils.CreateProjectFolder(args.project_name, args.adressExp, args.target_label, args.model_name)
 
-# Check if the file  having featurs and lables already exists if not extract the features and train
+# Check if the file  having features and labels already exists if not extract the features and train
 if os.path.exists(args.projectFolder):
-    #raise NameError('THis PROJECT IS ALREADY EXISTS!')
     print('THis PROJECT IS ALREADY EXISTS!')
-    #continue
+    
 else:
     os.mkdir(args.projectFolder)
-   
     reportFile  = open(os.path.join(args.projectFolder,'Report.txt'), 'a', encoding="utf-8")
     reportFile.write('**********************************************************************'+ '\n')
     reportFile.write(str(args))
-    reportFile.write('\n' + '**********************************************************************'+ '\n')
-   
-       
+    reportFile.write('\n' + '**********************************************************************'+ '\n') 
     patientsList, labelsList, slidesList, clinicalTableList, slideTableList = ConcatCohorts_Classic(imagesPath = args.datadir_train, cliniTablePath = args.clini_dir, slideTablePath = args.slide_dir,
                                                     label = args.target_label, reportFile = reportFile)
     print('\nLOAD THE DATASET FOR TRAINING...\n')  
@@ -122,10 +104,8 @@ else:
     print(patientID)
     args.split_dir = os.path.join(args.projectFolder, 'SPLITS')
     os.makedirs(args.split_dir, exist_ok = True)
-    args.feature_label_dir = os.path.join(args.projectFolder, 'feature_lables')
+    args.feature_label_dir = os.path.join(args.projectFolder, 'feature_labels')
     os.makedirs(args.feature_label_dir, exist_ok = True)
-    
-    #Create diffrent training sets for patient counts 
     train_size_list = [400,300,200,100,50,25]
     for t in train_size_list:
         counter = t
@@ -221,16 +201,10 @@ else:
                 np_all_features = all_features.numpy()
                 labels = torch_labels.reshape(-1).t()
                 np_labels = labels.numpy()
-               
                 return np_all_features, np_labels
-                # numpy.save("./feature_vectors_" + self.name_project + ".npy", np_all_features)
-                # numpy.save("./labels_" + self.name_project + ".npy", np_labels)
-               
-       
-       
+
         fc_train = FeatureExtraction(path_train)
         np_train_feature_vectors, np_tarin_labels = fc_train.extract_and_save_feature_vectors()
-        #print(np_train_feature_vectors, np_tarin_labels)
         path_train_feature_save = os.path.join(args.feature_label_dir, 'train_features'+str(counter)+'.npy')
         path_train_lable_save = os.path.join(args.feature_label_dir, 'train_lable'+str(counter)+'.npy')
         numpy.save(path_train_feature_save, np_train_feature_vectors)
@@ -245,14 +219,10 @@ else:
         test_pid = list(test_data['patientID'])
            
         df = pd.DataFrame(list(zip(test_pid, test_x, test_y)), columns = ['pid', 'X', 'y'])
-        #print(df)
         df.to_csv(os.path.join(args.split_dir, 'SPLIT_TEST_' + str(counter) + '.csv'), index = False)
-       
         path_test = os.path.join(args.split_dir, 'SPLIT_TEST_' + str(counter) + '.csv')
         fc_test = FeatureExtraction(path_test)
         np_test_feature_vectors, np_test_labels = fc_test.extract_and_save_feature_vectors()
-       
-        
         path_test_feature_save = os.path.join(args.feature_label_dir, 'test_features'+str(counter)+'.npy')
         path_test_lable_save = os.path.join(args.feature_label_dir, 'test_lable'+str(counter)+'.npy')
         np.save(path_test_feature_save, np_train_feature_vectors)
@@ -295,7 +265,7 @@ else:
                 test_1(model=trained_model ,device = device,testLoader =  testLoader)      
         print('DONE!')
 	
-	#Saving the trained model
+        #Saving the trained model
         args.result = os.path.join(args.projectFolder, 'RESULTS')
         os.makedirs(args.result, exist_ok = True)
         model_path = os.path.join(args.projectFolder,'RESULTS', 'saved_model'+str(counter)+'.pkl')

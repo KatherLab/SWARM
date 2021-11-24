@@ -8,7 +8,7 @@ bash ./swarm-learning/bin/run-sl        \
     --sn-api-port=11000                 \
     --sl-fs-port=16000                  \
     --data-dir=path-to-data-dir \
-    --model-dir=path-to-model-dir-having-main-pathon-file/model    \
+    --model-dir=path-to-model-dir-having-main-pathon-file/MODEL    \
     --model-program=main.py        \
     --gpu=0                             \
     --apls-ip  system_A_ip               \

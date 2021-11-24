@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-
 """
 Created on Thu Jul  8 16:26:43 2021
 
-@author: User
+@author: oliver
 """
-import torch.nn.functional as F
-import torch.nn as nn
 
-#from swarm import SwarmCallback
+import torch.nn as nn
 import torch
 
 def doTrainBatch(model, device, trainLoader, optimizer, epoch):
@@ -25,32 +22,8 @@ def doTrainBatch(model, device, trainLoader, optimizer, epoch):
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                   epoch, batchIdx * len(data), len(trainLoader.dataset),
                   100. * batchIdx / len(trainLoader), loss.item()))
-    return model
-        # Swarm Learning Interface
-        #if swarmCallBack is not None:
-         #   swarmCallBack.on_batch_end()  
-        
-            
-def test(model, device, testLoader):
-    model.eval()
-    testLoss = 0
-    correct = 0
-    with torch.no_grad():
-        for data, target in testLoader:
-            data, target = data.to(device), target.to(device)
-            output = model(data)
-            #print(output)
-            criterion = nn.CrossEntropyLoss()
-            testLoss += criterion(output, target).item()  # sum up batch loss
-            pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
-            #print(pred)
-            correct += pred.eq(target.view_as(pred)).sum().item()
-            
-    testLoss /= len(testLoader.dataset)
-
-    print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
-        testLoss, correct, len(testLoader.dataset),
-        100. * correct / len(testLoader.dataset)))    
+    return model     
+              
              
 def test_1(model, device, testLoader):
     model.eval()
