@@ -20,15 +20,15 @@ The *deploy* folder containes the script 'deploy_with_multiple_models.py' used f
   
 ## Run training :
 
-To start the swarm learning the user has to clone the repo and place the system folders in the respective system. 
-This Github repository has to be cloned in all the systems. 
+To start the swarm learning the user has to clone this Github repository has to be cloned in all the systems and do the changes in the respective systems. 
+All the data directory paths and hyperparametes hav to be set in the expitremt files and the main.py files.
 The first step is to create the docker image with the name ‘pyt-cv2’ using the Dockerfile in the *docker* folder in all the systems. 
 The second step is to change the IP address in all the scripting files in the respective system.
-Run the swarm learning setup  In System A run the run-apls command in "SWARM\System A\swarm_setup_training\swarm-learning\bin" enter the license key to use the HPE swarm platform.
+To run the swarm learning setup in System A run the run-apls command in "SWARM\System A\swarm_setup_training\swarm-learning\bin" enter the license key to use the HPE swarm platform.
 After the license key is activated start the spire-server.sh file in “SWARM\System A\swarm_setup_training”
-Run the sn-node-sentinal.sh file in “SWARM\System A\swarm_setup_training” wait for a while till the port is ready.
+Run the sn-node-sentinal.sh file in “SWARM\System A\swarm_setup_training” wait till the port is ready.
 Run the sn-node.sh file in the other two systems and check that all the ports are ready.
 Run sl-node.sh file in all three systems and wait for the process to be completed and models to be saved in the respective systems. 
 
 
-To start training, we use the Main.py script. The full path to the experiemnt file, should be used as an input variable in this script.
+
