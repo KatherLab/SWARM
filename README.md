@@ -26,16 +26,15 @@ To use one's own data, it is recommended to  use [this preprocessing code](https
 ## System  Preparation:
 Has to be done equally on each System if not said otherwhise! 
 * clone this Github repository on each System
-*  Change Hyperparameters:
+* Unzip the Dataset into the respective System into the folder SWARM/System A/swarm_setup_training/data for all systems
+* Change Hyperparameters:
     1. On System A get the ip adress (open a terminal, run the command:`hostname  -I | cut -f1 -d' '` )
-    2. Open the [sl-node](System%20A/swarm_setup_training/sl-node.sh) and [sn-node](System%20A/swarm_setup_training/sn-node-sentinel.sh) with an editor and insert the previously noted ip-adresses. 
-    3. Change the data directory and model directory inside those files aswell.
-    4. In the [experiment file](System%20A/swarm_setup_training/MODEL/expirement_file.txt) you have to provide the following information:
+    2. On System B and System C open  the [sl-node](System%20B/swarm_setup_training/sl-node.sh) and [sn-node](System%20C/swarm_setup_training/sn-node-sentinel.sh) with an editor and insert the previously noted ip-adress from System A  in the predefined line (eg: `system_A_ip=137.226.23.146`). 
+    3. In the [experiment file](System%20A/swarm_setup_training/MODEL/expirement_file.txt) you have to provide the following information on all 3 Systems:
         * a project name
         * the folder path to your training data
         * the target name that your model will train on(e.g. 'isMSIH')
-    5. repeat steps i-iv on the remaining systems for the respective folders B and C      
- 
+    
 * On each system, create a docker image with the name ‘pyt-cv2’ using the Dockerfile:
 
 
