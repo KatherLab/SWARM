@@ -1,8 +1,8 @@
 #!/bin/sh
 sudo docker rm sl-1
 #add variables here:
-model_directory =<path-to-model-dir-having-main-pathon-file/MODEL>
-data_directory =<path-to-data-dir>
+data_directory =data
+model_directory =MODEL
 #####
 system_A_ip =$(hostname  -I | cut -f1 -d' ')
 bash ./swarm-learning/bin/run-sl        \
