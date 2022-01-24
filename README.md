@@ -21,17 +21,24 @@ A small example dataset is provided, where the WSI are given as tesselated and n
 
 * Download four subcohorts from  [given link]() :exclamation:link still missing:exclamation:
 * Provide one cohort for each System, the fourth cohort can be used as an external test set afterwards
-
+ 
 ## System  Preparation:
 (Has to be done equally on each System if not said otherwhise )
-* clone this Github repository 
-*  change system changes :exclamation: what needs to be changed and where?:exclamation: 
-* data directory paths and hyperparametes have to be set in the experiment files and the main.py files.
-* Create  docker image with the name ‘pyt-cv2’ using the Dockerfile:
+* clone this Github repository on each System
+*  Change Hyperparameters:
+    1. Note the public ip-adress from each of your 3 Systems ([Get your IP Address in Linux](https://linuxize.com/post/how-to-find-ip-address-linux/))
+    2. Open the [sl-node](System%20A/swarm_setup_training/sl-node.sh) and [sn-node](System%20A/swarm_setup_training/sn-node-sentinel.sh) with an editor and insert the previously noted ip-adresses. 
+    3. Change the data directory and model directory inside those files aswell.
+    4. In the [experiment file](System%20A/swarm_setup_training/MODEL/expirement_file.txt) you have to provide the following information:
+        * a project name
+        * the folder path to your training data
+        * the target name that your model will train on(e.g. 'isMSIH')
+    5. repeat steps i-iv on the remaining systems for the respective folders B and C      
+ 
+* On every System, create a docker image with the name ‘pyt-cv2’ using the Dockerfile:
     *. open terminal in docker folder
     *. `docker build -t pyt-cv2 .`
-* Change the IP address in all the scripting files
-    *. :exclamation: where???:exclamation: 
+
 ## Run Experiment
 
 1. (Only on System A, which serves as Host) Run the swarm learning setup
