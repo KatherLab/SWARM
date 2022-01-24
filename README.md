@@ -27,7 +27,7 @@ To use one's own data, it is recommended to  use [this preprocessing code](https
 Has to be done equally on each System if not said otherwhise! 
 * clone this Github repository on each System
 *  Change Hyperparameters:
-    1. Note the public ip-adress from each of your 3 Systems ([Get your IP Address in Linux](https://linuxize.com/post/how-to-find-ip-address-linux/))
+    1. On System A get the ip adress (open a terminal, run the command:`hostname  -I | cut -f1 -d' '` )
     2. Open the [sl-node](System%20A/swarm_setup_training/sl-node.sh) and [sn-node](System%20A/swarm_setup_training/sn-node-sentinel.sh) with an editor and insert the previously noted ip-adresses. 
     3. Change the data directory and model directory inside those files aswell.
     4. In the [experiment file](System%20A/swarm_setup_training/MODEL/expirement_file.txt) you have to provide the following information:
