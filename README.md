@@ -10,6 +10,7 @@ In general, the following requirements are needed to reproduce this experiment:
 **Furthermore** each system requires:
 *  **Linux-Distribution**
 * Administration rights
+* User has to be in the docker group : :exclamation: ? 
 * (optional) GPU for faster training 
 
 
@@ -30,12 +31,21 @@ Has to be done equally on each System if not said otherwhise!
 3. Change Hyperparameters:
     1. On System A get the ip adress (open a terminal, run the command:`hostname  -I | cut -f1 -d' '` )
     2. On System B and System C open  the [sl-node](System%20B/swarm_setup_training/sl-node.sh) and [sn-node](System%20C/swarm_setup_training/sn-node-sentinel.sh) with an editor and insert the previously noted ip-adress from System A  in the predefined line (eg: `system_A_ip=137.226.23.146`). 
-    3. (Optional) the target label can be changed inside the [experiment file](System%20A/swarm_setup_training/MODEL/expirement_file.txt). One has to provide the target name that the model will train on(e.g. 'isMSIH') on all 3 Systems:
-    
-4. On each system, create a docker image with the name ‘pyt-cv2’ using the Dockerfile:
-    * open terminal in docker folder
-    * `docker build -t pyt-cv2 .`
-
+    3. (Optional) the target label can be changed inside the [experiment file](System%20A/swarm_setup_training/MODEL/expirement_file.txt). One has to provide the target name that the model will train on(e.g. 'isMSIH') on all 3 Systems:  
+   
+4. Connect Computers via ssh:
+    1. On System A run in a command line  `sudo usermod -a -G docker <linux username System A>` 
+    2. Create a docker image with the name ‘pyt-cv2’ using the Dockerfile on all systems:
+        * open terminal in docker folder
+        * `docker build -t pyt-cv2 .`
+    3. Connecting the Systems(has to be done on the Systems B and C):
+        *  open a terminal and run `ssh-keygen`
+        *  run `cat ~/.ssh/id_rsa.pub`
+        *  run `ssh <linux username System A>@<IP of System A>`
+        *  run `mkdir ~/.ssh`
+        *  run `cat > ~/.`
+        *  run `cat >> ~/.ssh/authorized_keys`
+ 
 ## Run Experiment
 
 1. (Only on System A, which serves as Host) Run the swarm learning setup
