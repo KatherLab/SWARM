@@ -1,5 +1,6 @@
 #!/bin/sh
 sudo docker rm sn-1
+readonly system_A_ip= <system_A_ip>
 bash ./swarm-learning/bin/run-sn  \
     --name=sn-1              \
     --host-ip=system_A_ip       \
