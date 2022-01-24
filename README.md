@@ -71,4 +71,4 @@ Has to be done equally on each System if not said otherwhise!
 
 **Additionaly**:
 
-+ It might happen  that after starting a node, the desired message doesn't appear. It helps many times to start the node again or redo the whole process
+* It might happen  that after starting a node, the desired message doesn't appear. It helps many times to start the node again or redo the whole process
