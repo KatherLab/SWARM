@@ -5,7 +5,7 @@ The objective of this repository is to replicate a decentralized training multip
 ## Installation & Requirements:
 In general, the following requirements are needed to reproduce this experiment: 
 * HPE Account for swarm learning license:  https://myenterpriselicense.hpe.com/cwp-ui/auth/login
-* three physically separated computer systems running **Linux** with admin rights
+* three physically separated computer systems (in this repository they will be refered as *System A*,*System B* and *System C*, where System A will serve as the host)
 
 **Furthermore** each system requires:
 *  **Linux-Distribution**
@@ -48,7 +48,7 @@ Has to be done equally on each System if not said otherwhise!
  
 ## Run Experiment
 
-1. (Only on System A, which serves as Host) Run the swarm learning setup
+1. (Only on System A) Run the swarm learning setup
     1. open a terminal in "SWARM\System A\swarm_setup_training\swarm-learning\bin"
     2. `bash run-apls`  
     3. download only the key from https://myenterpriselicense.hpe.com/cwp-ui/evaluation/HPE-SWARM/0.3.0/null to use the HPE swarm platform.
