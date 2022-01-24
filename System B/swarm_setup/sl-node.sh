@@ -1,9 +1,9 @@
 #!/bin/sh
 sudo docker rm sl-2
-readonly system_B_ip=<system_B_ip>
-readonly system_A_ip=<system_A_ip>
-readonly data_directory = <path-to-data-dir>
-readonly model_directory = <path-to-model-dir-having-main-pathon-file/MODEL>
+system_A_ip=<system_A_ip>
+data_directory = <path-to-data-dir>
+model_directory = <path-to-model-dir-having-main-pathon-file/MODEL>
+system_B_ip =$(hostname  -I | cut -f1 -d' ')
 bash ./swarm-learning/bin/run-sl        \
     --name=sl-1                         \
     --sl-platform=pyt-cv2                   \
