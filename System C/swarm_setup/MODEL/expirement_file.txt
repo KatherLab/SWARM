@@ -1,10 +1,10 @@
 {
-    "projectDetails": "name-of-the-project",
+    "projectDetails": "<name-of-the-project>",
     
-    "dataDir_train": ["/platform/swarmml/data"],
+    "dataDir_train": ["</platform/swarmml/data>"],
     "dataDir_test": [""],
 
-    "targetLabels": ["name-target"],
+    "targetLabels": ["<name-target>"],
     "trainFull": "False",
 
     "maxNumBlocks": 150,
