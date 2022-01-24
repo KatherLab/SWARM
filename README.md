@@ -8,9 +8,9 @@ In general, the following requirements are needed to reproduce this experiment:
 * three physically separated computer systems running **Linux** with admin rights
 
 **Furthermore** each system requires:
-* Python >=3.7
-* torch,torchvision,numpy,pandas,sklearn,PIL
-* :exclamation:complete list:exclamation: includign source of SwarmCallback
+*  **Linux-Distribution**
+* administration rights
+* (optional) GPU for faster training 
 
 
 
