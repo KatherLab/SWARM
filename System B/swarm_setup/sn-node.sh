@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo docker rm sn-2
 #insert variables here:
-system_A_ip=<system_A_ip>
+system_A_ip=<linux username System A>@<system_A_ip>
 ####
 system_B_ip=$(hostname  -I | cut -f1 -d' ')
 bash ./swarm-learning/bin/run-sn  \
