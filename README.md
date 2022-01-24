@@ -9,7 +9,7 @@ In general, the following requirements are needed to reproduce this experiment:
 
 **Furthermore** each system requires:
 *  **Linux-Distribution**
-* administration rights
+* Administration rights
 * (optional) GPU for faster training 
 
 
