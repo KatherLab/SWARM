@@ -2,8 +2,8 @@
 sudo docker rm sl-2
 #insert variables here:
 system_A_ip=<system_A_ip>
-data_directory =<path-to-data-dir>
-model_directory = <path-to-model-dir-having-main-pathon-file/MODEL>
+data_directory =data
+model_directory =MODEL
 ######
 system_B_ip =$(hostname  -I | cut -f1 -d' ')
 bash ./swarm-learning/bin/run-sl        \
