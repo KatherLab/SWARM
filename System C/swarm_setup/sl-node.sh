@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo docker rm sl-3
 #insert variables here:
-system_A_ip=<system_A_ip>
+system_A_ip=<linux username System A>@<system_A_ip>
 data_directory =data
 model_directory =MODEL
 #####
