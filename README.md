@@ -5,25 +5,26 @@ The objective of this repository is to replicate a decentralized training multip
 ## Installation & Requirements:
 In general, the following requirements are needed to reproduce this experiment: 
 * HPE Account for swarm learning license:  https://myenterpriselicense.hpe.com/cwp-ui/auth/login
-* three physically separated computer systems
+* three physically separated computer systems running **Linux** with admin rights
 
 **Furthermore** each system requires:
 * Python >=3.7
-* torch,torchvision,numpy,pandas,sklearn
-* :exclamation:complete list:exclamation:
+* torch,torchvision,numpy,pandas,sklearn,PIL
+* :exclamation:complete list:exclamation: includign source of SwarmCallback
 
 
 
 
 ## Provided Data: 
-A small example dataset is provided, where the WSI are given as tesselated and normalized tiles and also as feature vectors
-[using this preprocessing code](https://github.com/KatherLab/preProcessing) according to: [“The Aachen Protocol for Deep Learning Histopathology](https://zenodo.org/record/3694994#.Yea3I9DMIu): A hands-on guide for data preprocessing”
 
+For this repository, a small example dataset is provided, where the WSI are given as tesselated and normalized tiles and also as feature vectors:
 * Download four subcohorts from  [given link]() :exclamation:link still missing:exclamation:
 * Provide one cohort for each System, the fourth cohort can be used as an external test set afterwards
- 
+
+To use one's own data, it is recommended to  use [this preprocessing code](https://github.com/KatherLab/preProcessing) and provide the dataset according to: [“The Aachen Protocol for Deep Learning Histopathology](https://zenodo.org/record/3694994#.Yea3I9DMIu): A hands-on guide for data preprocessing”
+
 ## System  Preparation:
-(Has to be done equally on each System if not said otherwhise )
+Has to be done equally on each System if not said otherwhise! 
 * clone this Github repository on each System
 *  Change Hyperparameters:
     1. Note the public ip-adress from each of your 3 Systems ([Get your IP Address in Linux](https://linuxize.com/post/how-to-find-ip-address-linux/))
@@ -35,9 +36,11 @@ A small example dataset is provided, where the WSI are given as tesselated and n
         * the target name that your model will train on(e.g. 'isMSIH')
     5. repeat steps i-iv on the remaining systems for the respective folders B and C      
  
-* On every System, create a docker image with the name ‘pyt-cv2’ using the Dockerfile:
-    *. open terminal in docker folder
-    *. `docker build -t pyt-cv2 .`
+* On each system, create a docker image with the name ‘pyt-cv2’ using the Dockerfile:
+
+
+    * open terminal in docker folder
+    * `docker build -t pyt-cv2 .`
 
 ## Run Experiment
 
@@ -64,4 +67,4 @@ A small example dataset is provided, where the WSI are given as tesselated and n
 
 **Additionaly**:
 
-It may appear that after starting a node, the desired message doesn't appear. It helps many times to start the node again or redo 
++ It might happen  that after starting a node, the desired message doesn't appear. It helps many times to start the node again or redo the whole process
