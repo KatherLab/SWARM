@@ -10,7 +10,7 @@ bash ./swarm-learning/bin/run-sl        \
     --name=sl-1                         \
     --sl-platform=pyt-cv2                   \
     --host-ip=$system_B_ip                 \
-    --sn-ip=$system_B_ip                    \
+    --sn-ip=$system_A_ip                    \
     --sn-api-port=11000                 \
     --sl-fs-port=16000                  \
     --data-dir=$data_directory  \
