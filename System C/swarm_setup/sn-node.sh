@@ -1,5 +1,7 @@
 #!/bin/sh
 sudo docker rm sn-3
+system_A_ip = <system_A_ip>
+system_C_ip = <system_C_ip>
 bash ./swarm-learning/bin/run-sn  \
     --name=sn-1              \
     --host-ip=system_C_ip       \
