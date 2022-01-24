@@ -37,7 +37,8 @@ Has to be done equally on each System if not said otherwhise!
     2. Create a docker image with the name ‘pyt-cv2’ using the Dockerfile on all systems:
         * open terminal in docker folder
         * `docker build -t pyt-cv2 .`
-    3. Connecting the Systems(has to be done on the Systems B and C):
+    3. (Optional) passwordless SSH:\
+       Has to be done on the Systems B and C
         *  open a terminal and run `ssh-keygen`
         *  run `cat ~/.ssh/id_rsa.pub`
         *  run `ssh <linux username System A>@<IP of System A>`
