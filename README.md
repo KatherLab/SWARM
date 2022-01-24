@@ -10,7 +10,6 @@ In general, the following requirements are needed to reproduce this experiment:
 **Furthermore** each system requires:
 *  **Linux-Distribution**
 * Administration rights
-* User has to be in the docker group : :exclamation: ? 
 * (optional) GPU for faster training 
 
 
