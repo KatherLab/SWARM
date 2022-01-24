@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo docker rm sl-2
-readonly system_B_ip=<system_A_ip>
+readonly system_B_ip=<system_B_ip>
 readonly data_directory = <path-to-data-dir>
 readonly model_directory = <path-to-model-dir-having-main-pathon-file/MODEL>
 bash ./swarm-learning/bin/run-sl        \
