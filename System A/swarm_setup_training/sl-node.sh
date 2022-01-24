@@ -1,10 +1,10 @@
 #!/bin/sh
 sudo docker rm sl-1
 #add variables here:
-data_directory =data
-model_directory =MODEL
+data_directory=data
+model_directory=MODEL
 #####
-system_A_ip =$(hostname  -I | cut -f1 -d' ')
+system_A_ip=$(hostname  -I | cut -f1 -d' ')
 bash ./swarm-learning/bin/run-sl        \
     --name=sl-1                         \
     --sl-platform=pyt-cv2                   \
