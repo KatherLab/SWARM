@@ -1,11 +1,9 @@
 {
-    "projectDetails": "<name-of-the-project>",
     
-    "dataDir_train": ["</platform/swarmml/data>"],
-    "dataDir_test": [""],
-
-    "targetLabels": ["<name-target>"],
-    "trainFull": "False",
+    
+    "dataDir_train": ["/System B/swarm_setup_training/data"],
+    
+    "targetLabels": ["isMSIH"], # set target label 
 
     "maxNumBlocks": 150,
     "epochs": 5,
@@ -14,5 +12,5 @@
     "modelName": "alexnet",
     "opt": "adam",
     "lr": 0.0001,
-    "gpuNo": 0
 }
+
