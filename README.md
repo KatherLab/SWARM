@@ -34,7 +34,7 @@ Has to be done equally on each System if not said otherwhise!
     3. (Optional) the target label can be changed inside the [experiment file](System%20A/swarm_setup_training/MODEL/expirement_file.txt). One has to provide the target name that the model will train on(e.g. 'isMSIH') on all 3 Systems:  
    
 4. Connect Computers via ssh:
-    1. On System A run in a command line  `sudo usermod -a -G docker <linux username System A>` 
+    1. On each system  run in a command line  `sudo usermod -a -G docker <linux username System>` 
     2. Create a docker image with the name ‘pyt-cv2’ using the Dockerfile on all systems:
         * open terminal in docker folder
         * `docker build -t pyt-cv2 .`
