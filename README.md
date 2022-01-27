@@ -5,13 +5,14 @@ The objective of this repository is to replicate a decentralized training of mul
 ## Installation & Requirements:
 In general, the following requirements are needed to reproduce this experiment: 
 * HPE Account for swarm learning license:  https://myenterpriselicense.hpe.com/cwp-ui/auth/login
+* click on the link https://myenterpriselicense.hpe.com/cwp-ui/evaluation/HPE-SWARM/0.3.0/null and download the licence 
 * three physically separated computer systems (in this repository they will be referred to as *System A*, *System B*, and *System C*, where System A will serve as the host)
 
 **Furthermore**, each system requires:
 *  **Linux-Distribution**
 *  All the three systems must be in the sudo and docker group
-    1. On each system from the account which has admin rights run in a command-line  'sudo usermod -a -G sudo <linux username System>'
-    2. On each system  from the account which has admin rights run in a command-line  'sudo usermod -a -G docker <linux username System>'
+    1. On each system from the account which has admin rights run in a command-line  'sudo usermod -a -G sudo \<username>'
+    2. On each system  from the account which has admin rights run in a command-line  'sudo usermod -a -G docker \<username>'
 * Administration rights
 * (optional) GPU for faster training 
 
@@ -38,7 +39,8 @@ Has to be done equally on each System if not said otherwise!
    
 4. Connect Computers via passwordless ssh and create a docker image:
    
-    1. Create a docker image with the name ‘pyt-cv2’ using the Dockerfile on all systems:
+    1. Login to the docker using the terminal type : docker login hub.myenterpriselicense.hpe.com -u <HPE-PASSPORT-EMAIL> -p hpe_eval
+    2.  Create a docker image with the name ‘pyt-cv2’ using the Dockerfile on all systems:
         * open terminal in docker folder
         * `docker build -t pyt-cv2 .`
     2. (Optional) passwordless SSH:\
@@ -53,7 +55,7 @@ Has to be done equally on each System if not said otherwise!
 ## Run Experiment
 
 1. (Only on System A) Run the swarm learning setup
-    1. open a terminal in "SWARM\System A\swarm-learning\bin"
+    1. open a terminal in "SWARM\System A\bin"
     2. `bash run-apls`  
     The output should look like this:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/run_apls.png?raw=true)
