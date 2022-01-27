@@ -32,7 +32,7 @@ Has to be done equally on each System if not said otherwhise!
 2. Unzip the Dataset into the respective System into the folder ***SWARM/System A/data*** for all systems
 3. Change Hyperparameters:
     1. On System A get the ip adress (open a terminal, run the command:`hostname  -I | cut -f1 -d' '` )
-    2. On System B and System C open  the [sl-node](System%20B/swarm_setup_training/sl-node.sh) and [sn-node](System%20C/swarm_setup_training/sn-node-sentinel.sh) with an editor and insert the previously noted ip-adress from System A  in the predefined line (eg: `system_A_ip=137.226.23.146`). 
+    2. On System B and System C open  the [sl-node](System%20B/sl-node.sh) and [sn-node](System%20C/sn-node-sentinel.sh) with an editor and insert the previously noted ip-adress from System A  in the predefined line (eg: `system_A_ip=137.226.23.146`). 
     3. (Optional) the target label can be changed inside the [experiment file](System%20A/MODEL/exp_A.txt). One has to provide the target name that the model will train on(e.g. 'isMSIH') on all 3 Systems:  
  
    
