@@ -83,7 +83,7 @@ Has to be done equally on each System if not said otherwhise!
     2. `sh sl-node.sh`
     3. this will initialize the training of the model and the output should look like this:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/sl-node.png?raw=true)
-6. As soon as the required number of systems(in this case two systems will complete the training) are done, the training is finished
+6. As soon as the required number of systems(in this case three systems will complete the training epochs) are done, the training is finished
 
 **Additionaly**:
 * It might happen  that after starting a node, the desired message doesn't appear. It helps many times to start the node again or redo the whole process
