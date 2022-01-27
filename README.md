@@ -53,11 +53,12 @@ Has to be done equally on each System if not said otherwhise!
     1. open a terminal in "SWARM\System A\swarm_setup_training\swarm-learning\bin"
     2. `bash run-apls`  
     3. upload the license key:
-        1. open the following website in your browser: `https://<ip>:5814/autopass/login_input` however substitute the ip with the System A's ip-adress(eg. `https://137.226.23.146:5814/autopass/login_input`)
+        1. open the following website in your browser: `https://<ip>:5814/autopass/login_input` however substitute the ip with System A's ip-adress(eg. `https://137.226.23.146:5814/autopass/login_input`)
         2. Use the default settings user_name: *admin*, and password: *password* and change the password as requested
         3. follow the steps in the following image:
         ![alt text](https://github.com/KatherLab/SWARM/blob/main/login.png?raw=true)
         4. A message should appear in the browser that the license key has been uploaded successfully.
+   
 2. (Only on System A) Start the spire-server .sh file in “SWARM\System   A\swarm_setup_training”spire-server.sh
     1. go to 'System A/swarm_setup_training/'
     2. `sh spire-server.sh`
@@ -75,5 +76,5 @@ Has to be done equally on each System if not said otherwhise!
 6. As soon as the required number of systems are done, the training is finished
 
 **Additionaly**:
-
 * It might happen  that after starting a node, the desired message doesn't appear. It helps many times to start the node again or redo the whole process
+* Further information regarding the use of HPE SWARM learning can be found in the documentation part of this repository (https://github.com/HewlettPackard/swarm-learning)
