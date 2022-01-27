@@ -52,7 +52,9 @@ Has to be done equally on each System if not said otherwhise!
 1. (Only on System A) Run the swarm learning setup
     1. open a terminal in "SWARM\System A\swarm_setup_training\swarm-learning\bin"
     2. `bash run-apls`  
-    3. upload the license key:
+    The output should look famikliar to:
+    ![alt text](https://github.com/KatherLab/SWARM/blob/main/run_apls.png?raw=true)
+    4. upload the license key:
         1. open the following website in your browser: `https://<ip>:5814/autopass/login_input` however substitute the ip with System A's ip-adress(eg. `https://137.226.23.146:5814/autopass/login_input`)
         2. Use the default settings user_name: *admin*, and password: *password* and change the password as requested
         3. follow the steps in the following image:
@@ -62,18 +64,23 @@ Has to be done equally on each System if not said otherwhise!
 2. (Only on System A) Start the spire-server .sh file in “SWARM\System   A\swarm_setup_training”spire-server.sh
     1. go to 'System A/swarm_setup_training/'
     2. `sh spire-server.sh`
+    3. wait until the last lines of the output look like this:
+    ![alt text](https://github.com/KatherLab/SWARM/blob/main/spire-server.png?raw=true)
 3. (Only on System A ) Run the SN Node:
     1. go to 'System A/swarm_setup_training/'
     2. `sh sn-node-sentinal.sh`
-    3. wait until port is ready :exclamation: clear message:exclamation: 
+    3. wait until port looks similiar to this:
+    ![alt text](https://github.com/KatherLab/SWARM/blob/main/sn-node.png?raw=true) 
 4. Run the sn-node.sh file in the other two systems:
     1. go to 'System #/swarm_setup_training/'     #do so for A on *System A* and B on *System B*
     2. `sh sn-node-sentinal.sh`
-    3. wait until ports are ready :exclamation: clear message:exclamation: 
+    3. wait until the output looks similiar to the screenshot above.
 5. Run sl-node in all three systems
     1. go to 'System #/swarm_setup_training/' #do so for all three systems
     2. `sh sl-node.sh`
-6. As soon as the required number of systems are done, the training is finished
+    3. this will initialize the training of the model and the output should look like this:
+    ![alt text](https://github.com/KatherLab/SWARM/blob/main/sl-node.png?raw=true)
+6. As soon as the required number of systems(in this case two systems will complete the training) are done, the training is finished
 
 **Additionaly**:
 * It might happen  that after starting a node, the desired message doesn't appear. It helps many times to start the node again or redo the whole process
