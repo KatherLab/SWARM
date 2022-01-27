@@ -56,7 +56,7 @@ Has to be done equally on each System if not said otherwise!
 ## Run Experiment
 
 1. (Only on System A) Run the swarm learning setup
-    1. open a terminal in "SWARM\System A\bin"
+    1. open a terminal in "SWARM\System A\swarm-learning\bin"
     2. `bash run-apls`  
     The output should look like this:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/run_apls.png?raw=true)
