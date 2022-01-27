@@ -64,7 +64,7 @@ Has to be done equally on each System if not said otherwhise!
         ![alt text](https://github.com/KatherLab/SWARM/blob/main/login.png?raw=true)
         4. A message should appear in the browser that the license key has been uploaded successfully.
    
-2. (Only on System A) Start the spire-server .sh file in “SWARM\System   A\swarm_setup_training”spire-server.sh
+2. (Only on System A) Start the spire-server .sh file in “SWARM\System   A\”spire-server.sh
     1. go to 'System A/'
     2. `sh spire-server.sh`
     3. wait until the last lines of the output look like this:
