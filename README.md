@@ -29,11 +29,11 @@ To use one's own data, it is recommended to  use [this preprocessing code](https
 ## System  Preparation:
 Has to be done equally on each System if not said otherwhise! 
 1. clone this Github repository on each System
-2. Unzip the Dataset into the respective System into the folder ***SWARM/System A/swarm_setup_training/data*** for all systems
+2. Unzip the Dataset into the respective System into the folder ***SWARM/System A/data*** for all systems
 3. Change Hyperparameters:
     1. On System A get the ip adress (open a terminal, run the command:`hostname  -I | cut -f1 -d' '` )
     2. On System B and System C open  the [sl-node](System%20B/swarm_setup_training/sl-node.sh) and [sn-node](System%20C/swarm_setup_training/sn-node-sentinel.sh) with an editor and insert the previously noted ip-adress from System A  in the predefined line (eg: `system_A_ip=137.226.23.146`). 
-    3. (Optional) the target label can be changed inside the [experiment file](System%20A/swarm_setup_training/MODEL/expirement_file.txt). One has to provide the target name that the model will train on(e.g. 'isMSIH') on all 3 Systems:  
+    3. (Optional) the target label can be changed inside the [experiment file](System%20A/MODEL/exp_A.txt). One has to provide the target name that the model will train on(e.g. 'isMSIH') on all 3 Systems:  
  
    
 4. Connect Computers via passwordless ssh and create a docker image:
@@ -53,7 +53,7 @@ Has to be done equally on each System if not said otherwhise!
 ## Run Experiment
 
 1. (Only on System A) Run the swarm learning setup
-    1. open a terminal in "SWARM\System A\swarm_setup_training\swarm-learning\bin"
+    1. open a terminal in "SWARM\System A\swarm-learning\bin"
     2. `bash run-apls`  
     The output should look like:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/run_apls.png?raw=true)
@@ -65,21 +65,21 @@ Has to be done equally on each System if not said otherwhise!
         4. A message should appear in the browser that the license key has been uploaded successfully.
    
 2. (Only on System A) Start the spire-server .sh file in “SWARM\System   A\swarm_setup_training”spire-server.sh
-    1. go to 'System A/swarm_setup_training/'
+    1. go to 'System A/'
     2. `sh spire-server.sh`
     3. wait until the last lines of the output look like this:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/spire-server.png?raw=true)
 3. (Only on System A ) Run the SN Node:
-    1. go to 'System A/swarm_setup_training/'
+    1. go to 'System A/'
     2. `sh sn-node-sentinal.sh`
     3. wait until port looks similiar to this:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/sn-node.png?raw=true) 
 4. Run the sn-node.sh file in the other two systems:
-    1. go to 'System #/swarm_setup_training/'     #do so for B on *System B* and C on *System C*
+    1. go to 'System #/'     #do so for B on *System B* and C on *System C*
     2. `sh sn-node.sh`
     3. wait until the output looks similiar to the screenshot above.
 5. Run sl-node in all three systems
-    1. go to 'System #/swarm_setup_training/' #do so for all three systems
+    1. go to 'System #/' #do so for all three systems
     2. `sh sl-node.sh`
     3. this will initialize the training of the model and the output should look like this:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/sl-node.png?raw=true)
