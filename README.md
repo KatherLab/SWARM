@@ -10,8 +10,8 @@ In general, the following requirements are needed to reproduce this experiment:
 **Furthermore** each system requires:
 *  **Linux-Distribution**
 *  All the three systems must be in the sudo and docker group
-    1. On each system from the account which has admin rights run in a command line  `sudo usermod -a -G sudo <linux username System>
-    2. On each system  from the account which has admin rights run in a command line  `sudo usermod -a -G docker <linux username System>
+    1. On each system from the account which has admin rights run in a command line  'sudo usermod -a -G sudo <linux username System>'
+    2. On each system  from the account which has admin rights run in a command line  'sudo usermod -a -G docker <linux username System>'
 * Administration rights
 * (optional) GPU for faster training 
 
