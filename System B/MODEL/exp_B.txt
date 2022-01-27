@@ -1,0 +1,23 @@
+{
+    "projectDetails": "Data_set_B",
+    
+    "dataDir_train": [""],
+    "dataDir_test": [""],
+
+    "targetLabels": ["isMSIH"],
+    "trainFull": "False",
+
+    "maxNumBlocks": 150,
+    "epochs": 5,
+    "batchSize":124,
+     
+    "seed": 1,
+    "k": 2,
+
+    "modelName": "alexnet",
+    "opt": "adam",
+    "lr": 0.0001,
+    "reg": 0.00001,
+    "gpuNo": 0,
+    "freezeRatio": 0.5
+}

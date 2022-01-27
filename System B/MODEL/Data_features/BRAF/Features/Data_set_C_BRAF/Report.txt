@@ -1,0 +1,14 @@
+**********************************************************************
+Namespace(adressExp='/media/oliver/EMMA-D/deploy/TCGA_G4_150.txt', batch_size=124, clini_dir=['/home/oliver/Desktop/swarm-learning/examples/test-example/app-data/TCGA-G4_CRC-DX/TCGA-G4_CRC-DX_CLINI.xlsx'], csv_name='CLEANED_DATA', datadir_train=['/home/oliver/Desktop/swarm-learning/examples/test-example/app-data/TCGA-G4_CRC-DX/BLOCKS_NORM_MACENKO'], feat_dir=['/home/oliver/Desktop/swarm-learning/examples/test-example/app-data/TCGA-G4_CRC-DX/FEATURES'], feature_extract=False, freeze_Ratio=0.5, gpuNo=0, k=2, lr=0.0001, maxBlockNum=150, max_epochs=1, model_name='resnet', numHighScoreBlocks=20, numHighScorePatients=10, opt='adam', projectFolder='/media/oliver/EMMA-D/deploy/TCGA_G4_150_BRAF', project_name='TCGA_G4_150', reg=1e-05, seed=1, slide_dir=['/home/oliver/Desktop/swarm-learning/examples/test-example/app-data/TCGA-G4_CRC-DX/TCGA-G4_CRC-DX_SLIDE.csv'], target_label='BRAF', target_labels=['BRAF'], train_full=False, useClassicModel=True, useCsv=True)
+**********************************************************************
+LOADING DATA FROM/home/oliver/Desktop/swarm-learning/examples/test-example/app-data/TCGA-G4_CRC-DX/BLOCKS_NORM_MACENKO...
+2 Patients didnt have the proper label for target label: BRAF
+Data for 0 Patients from Clini Table is not found in Slide Table!
+Data for 2 Patients from Slide Table is not found in Clini Table!
+**********************************************************************
+label column: BRAF
+label dictionary: {'MUT': 0, 'WT': 1}
+number of classes: 2
+Patient-LVL; Number of samples registered in class 0: 3
+Patient-LVL; Number of samples registered in class 1: 16
+**********************************************************************

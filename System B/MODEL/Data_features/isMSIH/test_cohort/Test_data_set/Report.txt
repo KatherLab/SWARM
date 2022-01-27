@@ -1,0 +1,14 @@
+**********************************************************************
+DEPLOYING...
+**********************************************************************
+LOADING DATA FROM/home/oliver/Desktop/swarm-learning/examples/test-example/app-data/TCGA-A6_CRC-DX/BLOCKS_NORM_MACENKO...
+19 Patients didnt have the proper label for target label: isMSIH
+Data for 0 Patients from Clini Table is not found in Slide Table!
+Data for 19 Patients from Slide Table is not found in Clini Table!
+**********************************************************************
+label column: isMSIH
+label dictionary: {'MSIH': 0, 'nonMSIH': 1}
+number of classes: 2
+Patient-LVL; Number of samples registered in class 0: 4
+Patient-LVL; Number of samples registered in class 1: 24
+**********************************************************************

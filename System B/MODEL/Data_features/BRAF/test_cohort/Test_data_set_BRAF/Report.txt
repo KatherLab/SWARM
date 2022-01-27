@@ -1,0 +1,14 @@
+**********************************************************************
+DEPLOYING...
+**********************************************************************
+LOADING DATA FROM/home/oliver/Desktop/swarm-learning/examples/test-example/app-data/TCGA-A6_CRC-DX/BLOCKS_NORM_MACENKO...
+8 Patients didnt have the proper label for target label: BRAF
+Data for 0 Patients from Clini Table is not found in Slide Table!
+Data for 8 Patients from Slide Table is not found in Clini Table!
+**********************************************************************
+label column: BRAF
+label dictionary: {'MUT': 0, 'WT': 1}
+number of classes: 2
+Patient-LVL; Number of samples registered in class 0: 6
+Patient-LVL; Number of samples registered in class 1: 33
+**********************************************************************
