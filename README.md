@@ -55,7 +55,7 @@ Has to be done equally on each System if not said otherwhise!
 1. (Only on System A) Run the swarm learning setup
     1. open a terminal in "SWARM\System A\swarm_setup_training\swarm-learning\bin"
     2. `bash run-apls`  
-    The output should look famikliar to:
+    The output should look like:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/run_apls.png?raw=true)
     4. upload the license key:
         1. open the following website in your browser: `https://<ip>:5814/autopass/login_input` however substitute the ip with System A's ip-adress(eg. `https://137.226.23.146:5814/autopass/login_input`)
