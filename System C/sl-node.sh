@@ -11,7 +11,7 @@ bash ./swarm-learning/bin/run-sl        \
     --sn-api-port=17000                 \
     --sl-fs-port=19000                  \
     --model-dir=$model_directory    \
-    --model-program=main_c.py        \
+    --model-program=main_C.py        \
     --gpu=0                             \
     --apls-ip $ip_a                 \
     -serverAddress $ip_a            \
