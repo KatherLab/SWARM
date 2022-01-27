@@ -39,11 +39,12 @@ Has to be done equally on each System if not said otherwise!
    
 4. Connect Computers via passwordless ssh and create a docker image:
    
-    1. Login to the docker using the terminal type : docker login hub.myenterpriselicense.hpe.com -u <HPE-PASSPORT-EMAIL> -p hpe_eval
-    2.  Create a docker image with the name ‘pyt-cv2’ using the Dockerfile on all systems:
+    1. Login to the docker using the terminal type: `docker login hub.myenterpriselicense.hpe.com -u <HPE-PASSPORT-EMAIL> -p hpe_eval`
+    2. Enable docker content trust `export DOCKER_CONTENT_TRUST=1`
+    3.  Create a docker image with the name ‘pyt-cv2’ using the Dockerfile on all systems:
         * open terminal in docker folder
         * `docker build -t pyt-cv2 .`
-    2. (Optional) passwordless SSH:\
+    4. (Optional) passwordless SSH:\
        Has to be done on Systems B and C
         *  open a terminal and run `ssh-keygen`
         *  run `cat ~/.ssh/id_rsa.pub`
