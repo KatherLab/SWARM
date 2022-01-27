@@ -57,7 +57,7 @@ Has to be done equally on each System if not said otherwhise!
         2. Use the default settings user_name: *admin*, and password: *password* and change the password as requested
         3. follow the steps in the following image:
         ![alt text](https://github.com/KatherLab/SWARM/blob/main/login.png?raw=true)
-    5. A message should appear in the browser that the license key has been uploaded successfully.
+        4. A message should appear in the browser that the license key has been uploaded successfully.
 2. (Only on System A) Start the spire-server .sh file in “SWARM\System   A\swarm_setup_training”spire-server.sh
     1. go to 'System A/swarm_setup_training/'
     2. `sh spire-server.sh`
