@@ -9,8 +9,10 @@ In general, the following requirements are needed to reproduce this experiment:
 
 **Furthermore** each system requires:
 *  **Linux-Distribution**
+*  All the three systems must be in the sudo and docker group
+    1. On each system from the account which has admin rights run in a command line  'sudo usermod -a -G sudo <linux username System>'
+    2. On each system  from the account which has admin rights run in a command line  'sudo usermod -a -G docker <linux username System>'
 * Administration rights
-* the linux account names must be the same on all systems
 * (optional) GPU for faster training 
 
 
@@ -32,13 +34,14 @@ Has to be done equally on each System if not said otherwhise!
     1. On System A get the ip adress (open a terminal, run the command:`hostname  -I | cut -f1 -d' '` )
     2. On System B and System C open  the [sl-node](System%20B/swarm_setup_training/sl-node.sh) and [sn-node](System%20C/swarm_setup_training/sn-node-sentinel.sh) with an editor and insert the previously noted ip-adress from System A  in the predefined line (eg: `system_A_ip=137.226.23.146`). 
     3. (Optional) the target label can be changed inside the [experiment file](System%20A/swarm_setup_training/MODEL/expirement_file.txt). One has to provide the target name that the model will train on(e.g. 'isMSIH') on all 3 Systems:  
+ 
    
-4. Connect Computers via ssh:
-    1. On each system  run in a command line  `sudo usermod -a -G docker <linux username System>` 
-    2. Create a docker image with the name ‘pyt-cv2’ using the Dockerfile on all systems:
+4. Connect Computers via passwordless ssh and create a docker image:
+   
+    1. Create a docker image with the name ‘pyt-cv2’ using the Dockerfile on all systems:
         * open terminal in docker folder
         * `docker build -t pyt-cv2 .`
-    3. (Optional) passwordless SSH:\
+    2. (Optional) passwordless SSH:\
        Has to be done on the Systems B and C
         *  open a terminal and run `ssh-keygen`
         *  run `cat ~/.ssh/id_rsa.pub`
@@ -52,7 +55,9 @@ Has to be done equally on each System if not said otherwhise!
 1. (Only on System A) Run the swarm learning setup
     1. open a terminal in "SWARM\System A\swarm_setup_training\swarm-learning\bin"
     2. `bash run-apls`  
-    3. upload the license key:
+    The output should look like:
+    ![alt text](https://github.com/KatherLab/SWARM/blob/main/run_apls.png?raw=true)
+    4. upload the license key:
         1. open the following website in your browser: `https://<ip>:5814/autopass/login_input` however substitute the ip with System A's ip-adress(eg. `https://137.226.23.146:5814/autopass/login_input`)
         2. Use the default settings user_name: *admin*, and password: *password* and change the password as requested
         3. follow the steps in the following image:
@@ -62,18 +67,23 @@ Has to be done equally on each System if not said otherwhise!
 2. (Only on System A) Start the spire-server .sh file in “SWARM\System   A\swarm_setup_training”spire-server.sh
     1. go to 'System A/swarm_setup_training/'
     2. `sh spire-server.sh`
+    3. wait until the last lines of the output look like this:
+    ![alt text](https://github.com/KatherLab/SWARM/blob/main/spire-server.png?raw=true)
 3. (Only on System A ) Run the SN Node:
     1. go to 'System A/swarm_setup_training/'
     2. `sh sn-node-sentinal.sh`
-    3. wait until port is ready :exclamation: clear message:exclamation: 
+    3. wait until port looks similiar to this:
+    ![alt text](https://github.com/KatherLab/SWARM/blob/main/sn-node.png?raw=true) 
 4. Run the sn-node.sh file in the other two systems:
-    1. go to 'System #/swarm_setup_training/'     #do so for A on *System A* and B on *System B*
-    2. `sh sn-node-sentinal.sh`
-    3. wait until ports are ready :exclamation: clear message:exclamation: 
+    1. go to 'System #/swarm_setup_training/'     #do so for B on *System B* and C on *System C*
+    2. `sh sn-node.sh`
+    3. wait until the output looks similiar to the screenshot above.
 5. Run sl-node in all three systems
     1. go to 'System #/swarm_setup_training/' #do so for all three systems
     2. `sh sl-node.sh`
-6. As soon as the required number of systems are done, the training is finished
+    3. this will initialize the training of the model and the output should look like this:
+    ![alt text](https://github.com/KatherLab/SWARM/blob/main/sl-node.png?raw=true)
+6. As soon as the required number of systems(in this case three systems will complete the training epochs) are done, the training is finished
 
 **Additionaly**:
 * It might happen  that after starting a node, the desired message doesn't appear. It helps many times to start the node again or redo the whole process
