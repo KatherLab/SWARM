@@ -10,7 +10,6 @@ In general, the following requirements are needed to reproduce this experiment:
 **Furthermore** each system requires:
 *  **Linux-Distribution**
 * Administration rights
-* the linux account names must be the same on all systems
 * (optional) GPU for faster training 
 
 
