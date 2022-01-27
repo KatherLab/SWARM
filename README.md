@@ -52,8 +52,12 @@ Has to be done equally on each System if not said otherwhise!
 1. (Only on System A) Run the swarm learning setup
     1. open a terminal in "SWARM\System A\swarm_setup_training\swarm-learning\bin"
     2. `bash run-apls`  
-    3. download only the key from https://myenterpriselicense.hpe.com/cwp-ui/evaluation/HPE-SWARM/0.3.0/null to use the HPE swarm platform.
-    4. wait until license key is activated :exclamation: clear message:exclamation: 
+    3. upload the license key:
+        1. open the following website in your browser: `https://<ip>:5814/autopass/login_input` however substitute the ip with the System A's ip-adress(eg. `https://137.226.23.146:5814/autopass/login_input`)
+        2. Use the default settings user_name: *admin*, and password: *password* and change the password as requested
+        3. follow the steps in the following image:
+        ![alt text](https://github.com/KatherLab/SWARM/blob/main/login.png?raw=true)
+    5. A message should appear in the browser that the license key has been uploaded successfully.
 2. (Only on System A) Start the spire-server .sh file in “SWARM\System   A\swarm_setup_training”spire-server.sh
     1. go to 'System A/swarm_setup_training/'
     2. `sh spire-server.sh`
