@@ -75,8 +75,8 @@ Has to be done equally on each System if not said otherwhise!
     3. wait until port looks similiar to this:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/sn-node.png?raw=true) 
 4. Run the sn-node.sh file in the other two systems:
-    1. go to 'System #/swarm_setup_training/'     #do so for A on *System A* and B on *System B*
-    2. `sh sn-node-sentinal.sh`
+    1. go to 'System #/swarm_setup_training/'     #do so for B on *System B* and C on *System C*
+    2. `sh sn-node.sh`
     3. wait until the output looks similiar to the screenshot above.
 5. Run sl-node in all three systems
     1. go to 'System #/swarm_setup_training/' #do so for all three systems
