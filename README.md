@@ -9,6 +9,7 @@ In general, the following requirements are needed to reproduce this experiment:
 
 **Furthermore** each system requires:
 *  **Linux-Distribution**
+*  All the three systems must be in the sudo and docker group
 * Administration rights
 * (optional) GPU for faster training 
 
