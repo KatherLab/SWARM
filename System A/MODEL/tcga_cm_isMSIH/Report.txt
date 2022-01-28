@@ -1,3 +1,0 @@
-**********************************************************************
-Namespace(adressExp='./tcga_cm.txt', batch_size=124, csv_name='CLEANED_DATA', freeze_Ratio=0.5, gpuNo=0, k=2, lr=0.0001, maxBlockNum=150, max_epochs=5, model_name='alexnet', numHighScoreBlocks=20, numHighScorePatients=10, opt='adam', projectFolder='./tcga_cm_isMSIH', project_name='tcga_cm', reg=1e-05, seed=1, target_label='isMSIH', target_labels=['isMSIH'], train_full=False, useClassicModel=True, useCsv=True)
-**********************************************************************
