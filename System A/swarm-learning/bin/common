@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+ #!/usr/bin/env bash
 
 ############################################################################
 ## Copyright 2021 Hewlett Packard Enterprise Development LP
@@ -34,11 +34,11 @@ swarmDockerHubAndUser="hub.myenterpriselicense.hpe.com/hpe_eval/swarm-learning"
 
 aplsImage="${swarmDockerHubAndUser}/apls:${swarmVer}"
 slTFImage="${swarmDockerHubAndUser}/sl-tf:${swarmVer}"
-slPytImage="${swarmDockerHubAndUser}/sl-pyt:${swarmVer}"
+slPytFImage="${swarmDockerHubAndUser}/sl-pyt:${swarmVer}"
+slCv2Image="pyt-cv2"
 snImage="${swarmDockerHubAndUser}/sn:${swarmVer}"
 spireImage="${swarmDockerHubAndUser}/spire-server:${swarmVer}"
 swciImage="${swarmDockerHubAndUser}/swci:${swarmVer}"
-cvImage="sl-pyt-opencv"
 
 # We need elevated privileges to run docker commands, if the current user is not
 # a member of the docker group. Hopefully, the user has configured password-less
@@ -247,6 +247,8 @@ genDockerExec()
             docker exec -it ${containerName} hostname | tr -d '\r\n')"
     fi
 
+    set -x
+
     if [[ -n "${3}" ]]
     then
         # The user has passed in an address. If we found a local container, see
@@ -256,7 +258,7 @@ genDockerExec()
               "${3}" != "${containerFQDN}"     && \
               "${3}" != "${containerHostname}" ]]
         then
-            ssh="ssh ${3}"
+            ssh="ssh oliver@${3}"
             containerName=$(${sudo} ${ssh} ${dockerPSCmd})
             [[ -z "${containerName}" ]] && error "cannot contact ${4}"
         fi
@@ -556,7 +558,7 @@ processOpts()
 
 dockerRun()
 {
-    ${sudo} docker run -ti                              \
+    ${sudo} docker run                                  \
         ${rm}                                           \
         ${tty}                                          \
         ${hostname}                                     \
