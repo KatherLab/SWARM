@@ -6,7 +6,7 @@ The objective of this repository is to reproduce the Swarm Learning experiments 
 
 Please cite our paper if you use this for your research: 
 
-Oliver Lester Saldanha, Philip Quirke, Nicholas P. West, Jacqueline A. James, Maurice B. Loughrey, Heike I. Grabsch, Manuel Salto-Tellez, Elizabeth Alwers, Didem Cifci, Narmin Ghaffari Laleh, Tobias Seibel, Richard Gray, Gordon G. A. Hutchins, Hermann Brenner, Tanwei Yuan, Titus J. Brinker, Jenny Chang-Claude, Firas Khader, Andreas Schuppert, Tom Luedde, Sebastian Foersch, Hannah Sophie Muti, Christian Trautwein, Michael Hoffmeister, Daniel Truhn,  View ORCID ProfileJakob Nikolas Kather. **Swarm learning for decentralized artificial intelligence in cancer histopathology.** bioRxiv, 2021. Available at: *https://doi.org/10.1101/2021.11.19.469139*
+*Oliver Lester Saldanha, Philip Quirke, Nicholas P. West, Jacqueline A. James, Maurice B. Loughrey, Heike I. Grabsch, Manuel Salto-Tellez, Elizabeth Alwers, Didem Cifci, Narmin Ghaffari Laleh, Tobias Seibel, Richard Gray, Gordon G. A. Hutchins, Hermann Brenner, Tanwei Yuan, Titus J. Brinker, Jenny Chang-Claude, Firas Khader, Andreas Schuppert, Tom Luedde, Sebastian Foersch, Hannah Sophie Muti, Christian Trautwein, Michael Hoffmeister, Daniel Truhn, Jakob Nikolas Kather.* **Swarm learning for decentralized artificial intelligence in cancer histopathology.** bioRxiv, 2021. Available at: *https://doi.org/10.1101/2021.11.19.469139*
 
 More information about our research group is available at http://kather.ai
 
