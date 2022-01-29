@@ -1,23 +1,24 @@
 # SWARM Learning For Histopathology Image Analysis
 
-The objective of this repository is to replicate a decentralized training of multiple cohorts in multiple centers as stated in the following paper: :exclamation:insert link to paper for swarm learning:exclamation:. It is based on workflows that were previously described in [Warnat-Herresthal et al., Nature 2021](https://rdcu.be/cA9XP) and [Laleh, N. G. et al., Gastroenterology 2020](https://www.biorxiv.org/content/10.1101/2021.08.09.455633v1.full.pdf). 
+The objective of this repository is to replicate a decentralized training of AI systems in computational pathology via Swarm Learning. The procedure is described in [Saldanha et al., biorxiv, 2021](https://www.biorxiv.org/content/10.1101/2021.11.19.469139v1.full). The Swarm Learning workflow was previously used for transcriptomics data in [Warnat-Herresthal et al., Nature 2021](https://rdcu.be/cA9XP). The histology image analysis workflow (single-center) was described [Ghaffari Laleh et al., biorxiv 2021](https://www.biorxiv.org/content/10.1101/2021.08.09.455633v1.full.pdf). 
 
-## Installation & Requirements:
+## Installation & Requirements
+
 In general, the following is required in order to reproduce this experiment:
-* Three physically separated computer systems (in this repository they will be referred to as *System A*, *System B*, and *System C*, where System A will serve as the host)
-* These systems must be running Linux through newly created users with docker installed for all users.
-* All three users require sudo privileges. This can be achieved by running the following command-line script from a user account with admin privileges in each system:
+* Three physically separated computer systems (in this repository they will be referred to as *System A*, *System B*, and *System C*)
+* These systems must be running Linux natively through newly created users with docker installed for all users. Running Linux in a virtual machine requires additional workarounds which are not described here. We used Ubuntu 20.04.
+* At each system, the user requires administrator privileges. This can be achieved by running the following command-line script from a user account with admin privileges in each system:
     1. 'sudo usermod -a -G sudo \<username>'
     
-    Where ‘username’ is the name of the users created as previously stated.
-* All three users require Docker. This can be installed individually using the following command-line script:
+    Where ‘username’ is the name of the users created as previously stated. Be aware that this should be disabled after running the experiments to improve security.
+* All three users (the user at each system) require [Docker](https://hub.docker.com/). This can be installed individually using the following command-line script:
     1. sudo apt-get update
     2. sudo apt-get install docker-ce docker-ce-cli containerd.io
 * All three users require to be a part of docker group. This can be achieved by running the following command-line script from a user account with admin privileges in each system:
     1. 'sudo usermod -a -G docker \<username>'
-* (optional) GPU for faster training 
+* (optional) GPU for faster training. Here, we propose a two-step approach with offline feature extraction and subsequently training the swarm network on these features, which speeds up training. 
 
-## Provided Data: 
+## Provided Data
 
 A small example dataset has been provided along with this repository. The provided whole slide images (WSIs) are tessellated, normalized and have had feature vectors generated. This data has been preprocessed according to [“The Aachen Protocol for Deep Learning Histopathology](https://zenodo.org/record/3694994#.Yea3I9DMIu): A hands-on guide for data preprocessing”
 * The four subcohorts of the example dataset can be downloaded at exclamation:link (still missing)
@@ -25,8 +26,10 @@ A small example dataset has been provided along with this repository. The provid
 
 When using your own data, it is strongly recommended to preprocess the data according to the Aachen Protocol for Deep Learning Histopathology. This can be done using the following code: (https://github.com/KatherLab/preProcessing)
 
+In our example, normalized image tiles are processed with a pretrained resnet18 to extract a feature vector for each tile. The swarm network is trained on these feature vectors. In this example, the features are already extracted and are saved in the folders "System A", "System B" and "System C" in this repository. 
 
-## System  Preparation:
+## System  Preparation
+
 Note: unless otherwise stated, the following must be done for all systems! 
 1. Clone this Github repository to each System
 2. Unzip the Dataset into the folder ***SWARM/System A/data*** for all systems
@@ -86,7 +89,8 @@ Note: unless otherwise stated, the following must be done for all systems!
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/sl-node.png?raw=true)
 6. . As soon as all systems are done, the training is will finish. The final, trained model will be saved in SWARM/System A/MODEL/saved_model/ as a .pkl file.
 
-**Additionally**:
+**Additionally**
+
 * In the event that when starting a node, any of the desired messages as shown in the screenshots above do not appear, starting the node again or redoing the whole process may resolve the issue.
 * Pre-print of the scientific paper about **Swarm learning for decentralized artificial intelligence in cancer histopathology** could be found in the following link: (https://www.biorxiv.org/content/10.1101/2021.11.19.469139v1.full)
 * Further information regarding the use of HPE SWARM learning can be found in the documentation section of the following repository: (https://github.com/HewlettPackard/swarm-learning)
