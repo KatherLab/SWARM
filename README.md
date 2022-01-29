@@ -83,10 +83,21 @@ Note: unless otherwise stated, the following must be done for each of the three 
     2. `sh sl-node.sh`
     3. This will initialize the training of the model. The expect output is as follows:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/sl-node.png?raw=true)
-6. . As soon as all systems are done, the training is will finish. The final, trained model will be saved in SWARM/System A/MODEL/saved_model/ as a .pkl file.
+6. As soon as all systems are done, the training is will finish. The final, trained model will be saved in SWARM/System A/MODEL/saved_model/ as a .pkl file.
 
 ## Troubleshooting
 
 * In the event that when starting a node, any of the desired messages as shown in the screenshots above do not appear, starting the node again or redoing the whole process may resolve the issue.
 * Further information regarding the use of HPE Swarm Learning can be found in the documentation section of the following repository: [HPE Swarm Learning](https://github.com/HewlettPackard/swarm-learning). Issues regarding the HPE package should be posted there and are usually responded to by the HPE team. 
+
+## License
+
+All data and source codes in this repository are released under the MIT license:
+
+`Copyright 2021-2022
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
+
+
 
