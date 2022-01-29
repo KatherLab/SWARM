@@ -8,14 +8,14 @@ In general, the following is required in order to reproduce this experiment:
 * Three physically separated computer systems (in this repository they will be referred to as *System A*, *System B*, and *System C*)
 * These systems must be running Linux natively through newly created users with docker installed for all users. Running Linux in a virtual machine requires additional workarounds which are not described here. We used Ubuntu 20.04.
 * At each system, the user requires administrator privileges. This can be achieved by running the following command-line script from a user account with admin privileges in each system:
-    1. 'sudo usermod -a -G sudo \<username>'
+    1. `sudo usermod -a -G sudo \<username>`
     
     Where ‘username’ is the name of the users created as previously stated. Be aware that this should be disabled after running the experiments to improve security.
 * All three users (the user at each system) require [Docker](https://hub.docker.com/). This can be installed individually using the following command-line script:
-    1. sudo apt-get update
-    2. sudo apt-get install docker-ce docker-ce-cli containerd.io
+    1. `sudo apt-get update`
+    2. `sudo apt-get install docker-ce docker-ce-cli containerd.io`
 * All three users require to be a part of docker group. This can be achieved by running the following command-line script from a user account with admin privileges in each system:
-    1. 'sudo usermod -a -G docker \<username>'
+    1. `sudo usermod -a -G docker \<username>`
 * (optional) GPU for faster training. Here, we propose a two-step approach with offline feature extraction and subsequently training the swarm network on these features, which speeds up training. 
 
 ## Provided Data
@@ -34,9 +34,9 @@ Note: unless otherwise stated, the following must be done for all systems!
 1. Clone this Github repository to each System
 2. Unzip the Dataset into the folder ***SWARM/System A/data*** for all systems
 3. Change Hyperparameters:
-    1. On System A, get the IP-address (open a terminal, run the command:`hostname  -I | cut -f1 -d' '` )
+    1. On System A, get the IP-address (open a terminal, run the command:`hostname  -I | cut -f1 -d ` )
     2. On System B and System C open  the [sl-node](System%20B/sl-node.sh) and [sn-node](System%20C/sn-node-sentinel.sh) with an editor and insert the previously noted IP-address from System A  in the predefined line (eg: `system_A_ip=137.226.23.146`). 
-    3. (Optional) the target label can be changed inside the [experiment file](System%20A/MODEL/exp_A.txt). One has to provide the target name that the model will train on(e.g. 'isMSIH') on all 3 Systems:  
+    3. (Optional) the target label can be changed inside the [experiment file](System%20A/MODEL/exp_A.txt). One has to provide the target name that the model will train on(e.g. "isMSIH") on all 3 Systems:  
  
 5. Setting up docker in all the systems:
     1. Login to the docker using the terminal type: `docker login hub.myenterpriselicense.hpe.com -u <HPE-PASSPORT-EMAIL> -p hpe_eval`
@@ -62,28 +62,28 @@ Note: unless otherwise stated, the following must be done for all systems!
     An example of the expected output::
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/run_apls.png?raw=true)
     4. Upload the license key:
-        1. open the following website in your browser: `https://<ip>:5814/autopass/login_input` however substitute the ip with System A's ip-adress(eg. `https://137.226.23.146:5814/autopass/login_input`)
+        1. open the following website in your browser: `https://<ip>:5814/autopass/login_input` however substitute the ip with System As ip-adress(eg. `https://137.226.23.146:5814/autopass/login_input`)
         2. Use the default settings user_name: *admin*, and password: *password* and change the password as prompted
         3. Perform the steps in the following image:
         ![alt text](https://github.com/KatherLab/SWARM/blob/main/login.png?raw=true)
         4. A message should appear in the browser that the license key has been uploaded successfully.
         5. Do not close the terminal and the browser window.
 2. (Only on System A) In a new terminal, Start the spire-server .sh file in “SWARM\System   A\”spire-server.sh
-    1. Go to 'System A/'
+    1. Go to System A/
     2. `sh spire-server.sh`
     3. Wait until the last lines of the output appears as follows:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/spire-server.png?raw=true)
 3. (Only on System A ) In a new terminal Run the SN Node:
-    1. Go to 'System A/'
+    1. Go to System A/
     2. `sh sn-node-sentinal.sh`
     3. Wait until the port appear similar to the following:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/sn-node.png?raw=true) 
 4. Run the sn-node.sh file in the other two systems:
-    1. Go to 'System #/'     #do so for B on *System B* and C on *System C*
+    1. Go to System #/     #do so for B on *System B* and C on *System C*
     2. `sh sn-node.sh`
     3. Wait until the output looks similar to the screenshot above.
 5. Run sl-node in all three systems
-    1. Go to 'System #/' #do so for all three systems
+    1. Go to System #/ #do so for all three systems
     2. `sh sl-node.sh`
     3. This will initialize the training of the model. The expect output is as follows:
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/sl-node.png?raw=true)
