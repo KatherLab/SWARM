@@ -1,6 +1,14 @@
 # SWARM Learning For Histopathology Image Analysis
 
-The objective of this repository is to replicate the Swarm Learning experiments described in [Saldanha et al., biorxiv, 2021](https://www.biorxiv.org/content/10.1101/2021.11.19.469139v1.full). This study demonstrates the feasibility of decentralized training of AI systems in computational pathology via Swarm Learning. The basic procedure was previously used for transcriptomics data in [Warnat-Herresthal et al., Nature 2021](https://rdcu.be/cA9XP). Similarly to this previous study, we use [HPE Swarm Learning](https://github.com/HewlettPackard/swarm-learning) as the core Swarm Learning package in our pipeline. In this repository, we describe the pipeline which integrates Swarm Learning with an end-to-end computational pathology workflow. The pathology image analysis workflow (single-center) was described [Ghaffari Laleh et al., biorxiv 2021](https://www.biorxiv.org/content/10.1101/2021.08.09.455633v1.full.pdf) as well as in several previous papers including [Kather et al., Nature Medicine 2019](https://dx.doi.org/10.1038/s41591-019-0462-y).
+## Background
+
+The objective of this repository is to reproduce the Swarm Learning experiments described in [Saldanha et al., biorxiv, 2021](https://www.biorxiv.org/content/10.1101/2021.11.19.469139v1.full). This study demonstrates the feasibility of decentralized training of AI systems in computational pathology via Swarm Learning. The basic procedure was previously used for transcriptomics data in [Warnat-Herresthal et al., Nature 2021](https://rdcu.be/cA9XP). Similarly to this previous study, we use [HPE Swarm Learning](https://github.com/HewlettPackard/swarm-learning) as the core Swarm Learning package in our pipeline. In this repository, we describe the pipeline which integrates Swarm Learning with an end-to-end computational pathology workflow. The pathology image analysis workflow (single-center) was described [Ghaffari Laleh et al., biorxiv 2021](https://www.biorxiv.org/content/10.1101/2021.08.09.455633v1.full.pdf) as well as in several previous papers including [Kather et al., Nature Medicine 2019](https://dx.doi.org/10.1038/s41591-019-0462-y). 
+
+Please cite our paper if you use this for your research: 
+
+Oliver Lester Saldanha, Philip Quirke, Nicholas P. West, Jacqueline A. James, Maurice B. Loughrey, Heike I. Grabsch, Manuel Salto-Tellez, Elizabeth Alwers, Didem Cifci, Narmin Ghaffari Laleh, Tobias Seibel, Richard Gray, Gordon G. A. Hutchins, Hermann Brenner, Tanwei Yuan, Titus J. Brinker, Jenny Chang-Claude, Firas Khader, Andreas Schuppert, Tom Luedde, Sebastian Foersch, Hannah Sophie Muti, Christian Trautwein, Michael Hoffmeister, Daniel Truhn,  View ORCID ProfileJakob Nikolas Kather. **Swarm learning for decentralized artificial intelligence in cancer histopathology.** bioRxiv, 2021. Available at: *https://doi.org/10.1101/2021.11.19.469139*
+
+More information about our research group is available at http://kather.ai
 
 ## Installation & Requirements
 
