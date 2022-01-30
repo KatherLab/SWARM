@@ -10,19 +10,24 @@ Please cite our publication if you use this for your research:
 
 More information about our research group is available at http://kather.ai
 
+## General outline
+
+Here, we detail the workflow for three physically separated computer systems (in this repository they will be referred to as *System A*, *System B*, and *System C*). The SL process begins with the enrolment of *nodes* (processes) with the swarm network. System A is used to initialize the license server by starting the license container and installing the swarm license downloaded from the HPE login website. System A also starts the SPIFFE SPIRE container. The first SN process (node) to go online is referred to as the “sentinel” node and will be the first to register itself with the SPIFFE SPIRE network. When the SN node of the system A is ready, the SN node of System B and System C are run. During training each system trains its data batch in the local system till the merging criterion (sync interval) is reached. The node which finishes its training batch first will be the leader and will collect the learning from other peers (depending on the minimum number of peers, in our case two), average the learning weights and send it back. 
+
 ## Installation & Requirements
 
 In general, the following is required in order to reproduce this experiment:
-* Three physically separated computer systems (in this repository they will be referred to as *System A*, *System B*, and *System C*) with an internet connection
-* These systems must be running Linux natively. We recommend to use newly created users with docker installed for all users. Running Linux in a virtual machine requires additional workarounds which are not described here. Here, we used Ubuntu 20.04.
+* All three systems must be running Linux natively. We recommend to use newly created users with docker installed for all users. Running Linux in a virtual machine requires additional workarounds which are not described here. Here, we used Ubuntu 20.04.
 * At each system, the user requires administrator privileges for some installation steps. We recommend to switch on sudo privileges for the current user like this:
     1. `sudo usermod -a -G sudo \<username>` where ‘username’ is the name of the current user. Be aware that this should be disabled after running the experiments for security reasons.
 * The user at each system requires [Docker](https://hub.docker.com/) which can be installed like this:
     1. `sudo apt-get update`
     2. `sudo apt-get install docker-ce docker-ce-cli containerd.io`
+The original Docker image was pulled from [registry](https://github.com/HewlettPackard/swarm-learning/blob/master/docs/setup.md#pull-docker-images). Here, a separate docker image is built on top of the existing docker image for the SL node with all the Python modules necessary for our workflow.
 * Each user must be part of a docker group. This can be achieved by running the following command-line script from a user account with admin privileges in each system:
     1. `sudo usermod -a -G docker \<username>`
 * (optional) We recommend that each system has a CUDA-enabled GPU for faster training. Here, we propose a two-step approach with offline feature extraction and subsequently training the swarm network on these features, which speeds up training. This also allows training on computers without a GPU in reasonable time
+* For usage of the HPE swarm learning community edition, the initial step is to register an [HPE license](https://myenterpriselicense.hpe.com/cwp-ui/auth/login) to run the SL platform. This process is managed by the Licence Server node. Docker containers are one of the important parts in the SL approach. 
 
 ## Example Data Set
 
@@ -107,6 +112,3 @@ All data and source codes in this repository are released under the MIT license:
 
 `Copyright 2021-2022. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
-
-
-
