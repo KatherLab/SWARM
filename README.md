@@ -4,9 +4,9 @@
 
 The objective of this repository is to reproduce the Swarm Learning experiments described in [Saldanha et al., biorxiv, 2021](https://www.biorxiv.org/content/10.1101/2021.11.19.469139v1.full). This study demonstrates the feasibility of decentralized training of AI systems in computational pathology via Swarm Learning. The basic procedure was previously used for transcriptomics data in [Warnat-Herresthal et al., Nature 2021](https://rdcu.be/cA9XP). Similarly to this previous study, we use [HPE Swarm Learning](https://github.com/HewlettPackard/swarm-learning) as the core Swarm Learning package in our pipeline. In this repository, we describe the pipeline which integrates Swarm Learning with an end-to-end computational pathology workflow. The pathology image analysis workflow (single-center) was described [Ghaffari Laleh et al., biorxiv 2021](https://www.biorxiv.org/content/10.1101/2021.08.09.455633v1.full.pdf) as well as in several previous papers including [Kather et al., Nature Medicine 2019](https://dx.doi.org/10.1038/s41591-019-0462-y). 
 
-Please cite our paper if you use this for your research: 
+Please cite our publication if you use this for your research: 
 
-*Oliver Lester Saldanha, Philip Quirke, Nicholas P. West, Jacqueline A. James, Maurice B. Loughrey, Heike I. Grabsch, Manuel Salto-Tellez, Elizabeth Alwers, Didem Cifci, Narmin Ghaffari Laleh, Tobias Seibel, Richard Gray, Gordon G. A. Hutchins, Hermann Brenner, Tanwei Yuan, Titus J. Brinker, Jenny Chang-Claude, Firas Khader, Andreas Schuppert, Tom Luedde, Sebastian Foersch, Hannah Sophie Muti, Christian Trautwein, Michael Hoffmeister, Daniel Truhn, Jakob Nikolas Kather.* **Swarm learning for decentralized artificial intelligence in cancer histopathology.** bioRxiv, 2021. Available at: *https://doi.org/10.1101/2021.11.19.469139*
+*Oliver Lester Saldanha, Philip Quirke, Nicholas P. West, Jacqueline A. James, Maurice B. Loughrey, Heike I. Grabsch, Manuel Salto-Tellez, Elizabeth Alwers, Didem Cifci, Narmin Ghaffari Laleh, Tobias Seibel, Richard Gray, Gordon G. A. Hutchins, Hermann Brenner, Tanwei Yuan, Titus J. Brinker, Jenny Chang-Claude, Firas Khader, Andreas Schuppert, Tom Luedde, Sebastian Foersch, Hannah Sophie Muti, Christian Trautwein, Michael Hoffmeister, Daniel Truhn and Jakob Nikolas Kather.* **Swarm learning for decentralized artificial intelligence in cancer histopathology.** bioRxiv, 2021. Available at: *https://doi.org/10.1101/2021.11.19.469139*
 
 More information about our research group is available at http://kather.ai
 
@@ -93,9 +93,12 @@ Note: unless otherwise stated, the following must be done for each of the three 
     ![alt text](https://github.com/KatherLab/SWARM/blob/main/sl-node.png?raw=true)
 6. As soon as all systems are done, the training is will finish. The final, trained model will be saved in SWARM/System A/MODEL/saved_model/ as a .pkl file.
 
-## Troubleshooting
+## Troubleshooting and mishaps
 
-* In the event that when starting a node, any of the desired messages as shown in the screenshots above do not appear, starting the node again or redoing the whole process may resolve the issue.
+* When starting a node, network communication issues might cause errors. Often, starting the node again or restarting all nodes will resolve the issue.
+* In our example, System A runs the SPIRE server. If this system shuts down or loses internet connection during training, the training process is stopped at this point. 
+* If Systems B or C lose internet or drop out from training for other reasons, The training process will continue and the dropped node or system can rejoin at a later time before the training is completed.
+* If several peers drop out during training and fewer peers than the "minumum number of peers" are left, then the training stops and has to be restarted from the beginning. Therefore, for large networks, it is advisable to set a liberal (low) number in the minimum peers setting.
 * Further information regarding the use of HPE Swarm Learning can be found in the documentation section of the following repository: [HPE Swarm Learning](https://github.com/HewlettPackard/swarm-learning). Issues regarding the HPE package should be posted there and are usually responded to by the HPE team. 
 
 ## License
