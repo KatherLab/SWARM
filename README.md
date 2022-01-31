@@ -44,7 +44,7 @@ Note: unless otherwise stated, the following must be done for each of the three 
 2. Unzip the Dataset into the folder ***SWARM/System A/data*** for all systems
 3. Change Hyperparameters:
     1. On System A, get the IP address (open a terminal, run the command:`hostname  -I | cut -f1 -d `). 
-    2. On System B and System C open the [sl-node](System%20B/sl-node.sh) and [sn-node](System%20C/sn-node-sentinel.sh) with an editor and insert the previously noted IP-address from System A in the predefined line (eg: `system_A_ip=137.226.23.146`).   
+    2. On System B and System C open the [sl-node](System%20B/sl-node.sh) and [sn-node](System%20C/sn-node-sentinel.sh) with an editor and insert the previously noted IP-address from System A in the predefined line (eg: `system_A_ip=137.116.23.146`).   
     3. (Optional) the target label (prediction target) can be changed inside the [experiment file](System%20A/MODEL/exp_A.txt). The user has to provide the target name that the model will train on on all 3 Systems. In our case, we train on microsatellite instability (MSI) status, the target is called "isMSIH" with two levels: "MSIH" and "nonMSIH".
  
 5. Setting up docker in all the systems:
