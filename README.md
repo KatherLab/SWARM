@@ -106,6 +106,10 @@ Note: unless otherwise stated, the following must be done for each of the three 
 * If several peers drop out during training and fewer peers than the "minumum number of peers" are left, then the training stops and has to be restarted from the beginning. Therefore, for large networks, it is advisable to set a liberal (low) number in the minimum peers setting.
 * Further information regarding the use of HPE Swarm Learning can be found in the documentation section of the following repository: [HPE Swarm Learning](https://github.com/HewlettPackard/swarm-learning). Issues regarding the HPE package should be posted there and are usually responded to by the HPE team. 
 
+## HIPAA compliance
+
+The source codes in this repository rely on Docker containers. These containers are not per se compliant with HIPAA and some healthcare institutions in the United States have reservations about using Docker containers. Some of these issues can be remedied by using Singularity containers or other similar platforms. Future releases of our software will incorporate these options. 
+
 ## License
 
 All data and source codes in this repository are released under the MIT license:
